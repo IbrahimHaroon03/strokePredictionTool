@@ -1,4 +1,5 @@
-CREATE DATABASE strokeData;
+CREATE DATABASE database;
+USE database;
 
 CREATE TABLE patientData (
     id INTEGER PRIMARY KEY AUTO_INCREMENT,
