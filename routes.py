@@ -1,9 +1,7 @@
-from flask import Flask, render_template, request
-import mysql.connector
+from flask import Flask, render_template
 
 app = Flask(__name__)
 
-# Routing to different pages
 @app.route('/')
 def home():
     return "Hello, Flask!"
@@ -22,7 +20,8 @@ def view_patient_database():
 
 @app.route('/addNewPatient')
 def add_new_patient():
-    return render_template('add_new_patient.html')
+    return render_template('.html')
+
 
 if __name__ == '__main__':
     app.run(debug=True)
