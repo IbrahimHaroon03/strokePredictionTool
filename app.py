@@ -6,13 +6,17 @@ app = Flask(__name__)
 def home():
     return "Hello, Flask!"
 
-@app.route('/homePage')
-def home_page():
-    return render_template('homePage.html')
-
 @app.route('/loginPage')
 def login_page():
-    return render_template('loginPage.html')
+    return render_template('login_page.html')
+
+@app.route('/adminDashboard')
+def home_page():
+    return render_template('admin_dashboard.html')
+
+@app.route('/viewPatientDatabase')
+def view_patient_database():
+    return render_template('view_patient_database.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
