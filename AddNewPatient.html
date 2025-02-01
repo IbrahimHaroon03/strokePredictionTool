@@ -1,14 +1,12 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Patient Information Form</title>
 </head>
-
 <body>
-    <form action="submit_form.php" method="post">
+    <form action="/submit" method="post">
         <!-- Gender -->
         <label for="gender">Gender:</label>
         <select id="gender" name="gender" required>
@@ -50,8 +48,8 @@
         <!-- Work Type -->
         <label for="work_type">Work Type:</label>
         <select id="work_type" name="work_type" required>
-            <option value="children">Children</option>
-            <option value="Govt_job">Government Job</option>
+            <option value="Children">Children</option>
+            <option value="Gov_job">Government Job</option>
             <option value="Never_worked">Never Worked</option>
             <option value="Private">Private</option>
             <option value="Self-employed">Self-employed</option>
@@ -79,10 +77,10 @@
         <!-- Smoking Status -->
         <label for="smoking_status">Smoking Status:</label>
         <select id="smoking_status" name="smoking_status" required>
-            <option value="formerly smoked">Formerly Smoked</option>
             <option value="never smoked">Never Smoked</option>
-            <option value="smokes">Smokes</option>
-            <option value="Unknown">Unknown</option>
+            <option value="formerly smoked">Formerly Smoked</option>
+            <option value="smoked">Smokes</option>
+            <option value="unknown">Unknown</option>
         </select>
         <br><br>
 
