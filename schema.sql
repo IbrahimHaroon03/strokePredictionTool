@@ -14,3 +14,13 @@ CREATE TABLE patientData (
     bmi DECIMAL(3,1) NOT NULL,
     smoking_status ENUM('never smoked', 'formerly smoked', 'smoked', 'unknown') NOT NULL
 );
+
+CREATE TABLE users (
+    id INTEGER PRIMARY KEY AUTO_INCREMENT,
+    username VARCHAR(50) NOT NULL UNIQUE,
+    password VARCHAR(50) NOT NULL,
+    role ENUM('Admin', 'User') NOT NULL DEFAULT 'User'
+);
+
+INSERT INTO users (username, password, role)
+VALUES ('Ibrahim', '123', 'Admin');
