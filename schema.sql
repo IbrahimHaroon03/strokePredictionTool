@@ -4,6 +4,7 @@ USE database;
 CREATE TABLE patientData (
     id INTEGER PRIMARY KEY AUTO_INCREMENT,
     gender ENUM('Male', 'Female', 'Other') NOT NULL,
+    age INTEGER,
     hypertension BOOLEAN NOT NULL,
     heart_disease BOOLEAN NOT NULL,
     ever_married BOOLEAN NOT NULL,
