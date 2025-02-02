@@ -11,6 +11,7 @@ CREATE TABLE IF NOT EXISTS users (
     username VARCHAR(50) NOT NULL UNIQUE,
     password VARCHAR(50) NOT NULL,
     role CHAR(30) NOT NULL DEFAULT 'User'
+    is_approved BOOLEAN NOT NULL DEFAULT 0
 )
 ''')
 
@@ -34,7 +35,7 @@ CREATE TABLE IF NOT EXISTS patientData (
     avg_glucose_level DECIMAL(5,2) NOT NULL,
     bmi DECIMAL(3,1) NOT NULL,
     smoking_status CHAR(30) NOT NULL
-)
+    )
 ''')
 
 # Commit the changes to the database
