@@ -4,6 +4,7 @@ body, html {
     padding: 0;
     font-family: Arial, sans-serif;
     font-size: 1rem; /* Set a base font size for rem calculations */
+    background-color: #333;
 }
 
 /* Side Navbar Styles */
@@ -13,7 +14,7 @@ body, html {
     left: 0;
     width: 30%; /* 250px / 16 = 15.625rem */
     height: 100vh;
-    background-color: #333;
+    background-color: #232222;
     color: white;
     padding: 1.25rem; /* 20px / 16 = 1.25rem */
     box-sizing: border-box;
@@ -32,13 +33,13 @@ body, html {
 }
 
 .side-navbar ul li:hover {
-    background-color: #1b6bff;
+    background-color: #576070;
 }
 
 .side-navbar ul li a {
     color: white;
     text-decoration: none;
-    font-size: 1.125rem; /* 18px / 16 = 1.125rem */
+    font-size: 1.5rem; /* 18px / 16 = 1.125rem */
     display: block;
     width: 100%;
     height: 100%;
@@ -55,18 +56,18 @@ body, html {
 }
 
 .main-content h2 {
-    color: #333;
+    color: white;
     font-size: 1.5rem; /* 24px / 16 = 1.5rem */
 }
 
 .main-content p {
-    color: #666;
+    color: white;
     font-size: 1rem; /* 16px / 16 = 1rem */
 }
 
 /* Navbar Title */
-.navbar-title {
-    font-size: 1.5rem; /* 24px / 16 = 1.5rem */
+.navbar-title, .page_titles {
+    font-size: 2rem; /* 24px / 16 = 1.5rem */
     font-weight: bold;
     margin-bottom: 1.25rem; /* 20px / 16 = 1.25rem */
     color: white;
@@ -75,6 +76,15 @@ body, html {
     padding-bottom: 3%;
 }
 
+.navbar-title {
+    border: 2px solid white;
+    padding-top: 3%;
+}
+
+.page_titles {
+    padding: 1.33rem;
+}
+
 li.active {
-    background-color: #1856ca; /* Active background color */
+    background-color: #576070; /* Active background color */
 }

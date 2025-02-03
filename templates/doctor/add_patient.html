@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../static/navbar_styles.css">
+    <title>Document</title>
+</head>
+<body>
+    <!-- Side Navbar -->
+    <nav class="side-navbar">
+        <div class="navbar-title">STROKE PREDICTION TOOL</div> 
+        <ul>
+            <li><a href="../all/index.html">Home</a></li>
+            <li><a href="">Patient Management</a></li>
+            <li><a href="">Predict Stroke Risk</a></li>
+            <li><a href="">Health Advice</a></li>
+            <li><a href="">Visualise Metrics</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <h1 class="page_titles">Patient Management</h1>
+        <section id="section1">
+            <form action="/submit" method="post">
+                <!-- Gender -->
+                <label for="gender">Gender:</label>
+                <select id="gender" name="gender" required>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Other">Other</option>
+                </select>
+                <br><br>
+        
+                <!-- Age -->
+                <label for="age">Age:</label>
+                <input type="number" id="age" name="age" required>
+                <br><br>
+        
+                <!-- Hypertension -->
+                <label for="hypertension">Hypertension:</label>
+                <select id="hypertension" name="hypertension" required>
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                </select>
+                <br><br>
+        
+                <!-- Heart Disease -->
+                <label for="heart_disease">Heart Disease:</label>
+                <select id="heart_disease" name="heart_disease" required>
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                </select>
+                <br><br>
+        
+                <!-- Ever Married -->
+                <label for="ever_married">Ever Married:</label>
+                <select id="ever_married" name="ever_married" required>
+                    <option value="No">No</option>
+                    <option value="Yes">Yes</option>
+                </select>
+                <br><br>
+        
+                <!-- Work Type -->
+                <label for="work_type">Work Type:</label>
+                <select id="work_type" name="work_type" required>
+                    <option value="Children">Children</option>
+                    <option value="Gov_job">Government Job</option>
+                    <option value="Never_worked">Never Worked</option>
+                    <option value="Private">Private</option>
+                    <option value="Self-employed">Self-employed</option>
+                </select>
+                <br><br>
+        
+                <!-- Residence Type -->
+                <label for="residence_type">Residence Type:</label>
+                <select id="residence_type" name="residence_type" required>
+                    <option value="Rural">Rural</option>
+                    <option value="Urban">Urban</option>
+                </select>
+                <br><br>
+        
+                <!-- Avg Glucose Level -->
+                <label for="avg_glucose_level">Average Glucose Level:</label>
+                <input type="number" id="avg_glucose_level" name="avg_glucose_level" step="0.01" required>
+                <br><br>
+        
+                <!-- BMI -->
+                <label for="bmi">Body Mass Index (BMI):</label>
+                <input type="number" id="bmi" name="bmi" step="0.1" required>
+                <br><br>
+        
+                <!-- Smoking Status -->
+                <label for="smoking_status">Smoking Status:</label>
+                <select id="smoking_status" name="smoking_status" required>
+                    <option value="never smoked">Never Smoked</option>
+                    <option value="formerly smoked">Formerly Smoked</option>
+                    <option value="smoked">Smokes</option>
+                    <option value="unknown">Unknown</option>
+                </select>
+                <br><br>
+        
+                <button type="submit">Submit</button>
+            </form>
+        </section>
+
+    </div>
+</body>
