@@ -4,6 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="../../static/navbar_styles.css">
+        <link rel="stylesheet" href="../../static/login_styles.css">
         <script src="../../static/active.js" defer></script>
         <title>Document</title>
     </head>
@@ -21,17 +22,24 @@
     <!-- Main Content -->
     <div class="main-content">
         <section id="section1">
+            <h1 class="page_titles">Sign up Page</h1>
             <form method="POST">
                 <p>
                     <label for="username">Username:</label>
                     <input type="text" id="username" name="username" required>
-                </p>
-                <p>
+
                     <label for="password">Password:</label>
                     <input type="password" id="password" name="password" required>
+
+                    <label for="role">Role:</label>
+                    <select id="role" name="role" required>
+                        <option value="User">User</option>
+                        <option value="Admin">Admin</option>
+                    </select>
+                
                 </p>
                 <p>
-                    <input type="submit" value="Login">
+                    <input type="submit" value="SIGN UP">
                 </p>
             </form>
         </section>
