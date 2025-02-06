@@ -48,7 +48,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             } elseif ($user['role'] == 'doctor') {
                 header("Location: ../templates/doctor/doctor_dashboard.html");
             } else {
-                header("Location: ../templates/user/user_dashboard.html");
+                header("Location: ../templates/patient/patient_dashboard.html");
             }
             exit();
         } else {
