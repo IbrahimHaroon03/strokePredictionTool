@@ -18,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Get form data
     $username = trim($_POST['username']);
     $password = $_POST['password'];
-    $role = $_POST['role']; // Should be either 'admin' or 'user'
+    $role = $_POST['role']; 
 
     // Validate input
     if (empty($username) || empty($password) || empty($role)) {
