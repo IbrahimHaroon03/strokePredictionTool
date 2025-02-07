@@ -18,17 +18,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stroke = $_POST['stroke'];
 
     // Sanitize and validate data (if necessary)
-    if (empty($gender) || empty($age) || empty($hypertension) || empty($heart_disease) || empty($ever_married) || empty($work_type) || empty($residence_type) || empty($avg_glucose_level) || empty($bmi) || empty($smoking_status) || empty($stroke)) {
+    if (empty($gender) || empty($age) || empty($hypertension) || empty($heart_disease) || empty($ever_married) || empty($work_type) || empty($residence_type) || empty($avg_glucose_level) || empty($bmi) || empty($smoking_status)) {
         die("All fields are required.");
     }
 
     // Insert data into the database
-    $sql = "INSERT INTO patients (gender, age, hypertension, heart_disease, ever_married, work_type, Residence_type, avg_glucose_level, bmi, smoking_status, stroke)
+    $sql = "INSERT INTO patients (gender, age, hypertension, heart_disease, ever_married, work_type, residence_type, avg_glucose_level, bmi, smoking_status)
             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
     // Prepare statement
     if ($stmt = $conn->prepare($sql)) {
-        $stmt->bind_param("siiisssdss", $gender, $age, $hypertension, $heart_disease, $ever_married, $work_type, $residence_type, $avg_glucose_level, $bmi, $smoking_status, $stroke);
+        $stmt->bind_param("siiisssdss", $gender, $age, $hypertension, $heart_disease, $ever_married, $work_type, $residence_type, $avg_glucose_level, $bmi, $smoking_status);
         
         // Execute the statement
         if ($stmt->execute()) {
