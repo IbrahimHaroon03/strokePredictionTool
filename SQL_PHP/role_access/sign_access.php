@@ -1,20 +1,22 @@
 <?php
-session_start(); // Start the session to check login status
+session_start();
 
-// Check if the user is logged in by verifying session data
-if (isset($_SESSION['user'])) {
-    // Redirect based on the user's role if already logged in
-    $user = $_SESSION['user']; // Get user data from session
-
-    if ($user['role'] == 'admin') {
-        header("Location: ../../templates/admin/admin_dashboard.php");
-        exit; // Stop further execution after redirect
-    } elseif ($user['role'] == 'doctor') {
-        header("Location: ../../templates/doctor/doctor_dashboard.php");
-        exit;
-    } elseif ($user['role'] == 'patient') {
-        header("Location: ../../templates/patient/patient_dashboard.php");
-        exit;
+// Checks if a value is null or not
+if (isset($_SESSION['user_id'])) {
+    // Redirect logged-in users to their appropriate dashboard
+    switch ($_SESSION['role']) {
+        case 'admin':
+            header("Location: ../../templates/admin/admin_dashboard.php");
+            break;
+        case 'doctor':
+            header("Location: ../../templates/doctor/doctor_dashboard.php");
+            break;
+        case 'patient':
+            header("Location: ../../templates/patient/patient_dashboard.php");
+            break;
+        default:
+            header("Location: sign_in.php"); // Fallback
     }
+    exit();
 }
 ?>

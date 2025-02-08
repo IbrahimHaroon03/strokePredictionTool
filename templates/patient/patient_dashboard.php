@@ -16,7 +16,7 @@
         <ul>
             <li><a href="patient_home.php">Home</a></li>
             <li id="home"><a href="patient_dashboard.php">Dashboard</a></li>
-            <li id="home"><a href=".php">Sign Out</a></li>
+            <li><a href="../../SQL_PHP/logout.php">Sign Out</a></li>
         </ul>
     </nav>
 

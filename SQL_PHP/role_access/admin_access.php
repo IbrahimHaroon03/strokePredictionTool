@@ -7,11 +7,19 @@ if (!isset($_SESSION['user_id'])) {
     exit();
 }
 
-$allowed_roles = ['admin']; 
-
-if (!in_array($_SESSION['role'], $allowed_roles)) {
-    // Redirect to a default page if role is not allowed
-    header("Location: ../../templates/admin/admin_dashboard.php");
+// Define allowed role
+if ($_SESSION['role'] !== 'admin') {
+    // Redirect unauthorized users to their respective dashboards
+    switch ($_SESSION['role']) {
+        case 'doctor':
+            header("Location: ../../templates/doctor/doctor_dashboard.php");
+            break;
+        case 'patient':
+            header("Location: ../../templates/patient/patient_dashboard.php");
+            break;
+        default:
+            header("Location: ../../templates/all/index.php");
+    }
     exit();
 }
 ?>
