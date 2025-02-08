@@ -1,4 +1,4 @@
-<?php include '../../SQL_PHP/role_access/sign_access.php'; ?>
+<?php include '../../SQL_PHP/role_access/doctor_access.php'; ?>
 
 <!DOCTYPE html>
 <html lang="en">
