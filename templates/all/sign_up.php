@@ -35,7 +35,7 @@ if (isset($_SESSION['user'])) {
         <div class="navbar-title">STROKE PREDICTION TOOL</div> 
         <ul>
             <li id="home"><a href="../all/index.php">Home</a></li>
-            <li id="signin"><a href="../all/sign_in.php">Log In</a></li>
+            <li id="signin"><a href="../all/sign_in.php">Sign In</a></li>
             <li id="signup"><a href="../all/sign_up.php">Sign Up</a></li>
         </ul>
     </nav>
