@@ -1,6 +1,4 @@
-<?php
-session_start();
-?>
+<?php include '../../SQL_PHP/role_access/sign_access.php'; ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -18,17 +16,8 @@ session_start();
         <div class="navbar-title">STROKE PREDICTION TOOL</div> 
         <ul>
             <li id="home"><a href="index.php">Home</a></li>
-            <li id="signin"> 
-                <?php if (!isset($_SESSION['user_id'])): ?>
-                    <!-- Show login and sign-up buttons only if the user is not logged in -->
-                    <a href="sign_in.php">Sign In</a>
-                <?php endif; ?>
-            </li>
-            <li id="signup">
-                <?php if (!isset($_SESSION['user_id'])): ?>
-                    <a href="sign_up.php">Sign Up</a>
-                <?php endif; ?>
-            </li>
+            <li id="signin"> <a href="sign_in.php">Sign In</a></li>
+            <li id="signup"><a href="sign_up.php">Sign Up</a></li>
         </ul>
     </nav>
 
