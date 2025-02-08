@@ -13,9 +13,9 @@
     <nav class="side-navbar">
         <div class="navbar-title">STROKE PREDICTION TOOL</div> 
         <ul>
-            <li id="home"><a href="../all/index.html">Home</a></li>
-            <li id="login"><a href="../all/login.html">Log In</a></li>
-            <li id="signup"><a href="../all/sign_up.html">Sign Up</a></li>
+            <li id="home"><a href="../all/index.php">Home</a></li>
+            <li id="login"><a href="../all/login.php">Log In</a></li>
+            <li id="signup"><a href="../all/sign_up.php">Sign Up</a></li>
         </ul>
     </nav>
 

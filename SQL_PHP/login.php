@@ -32,11 +32,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             // Redirect based on role
             if ($user['role'] == 'admin') {
-                header("Location: ../templates/admin/admin_dashboard.html");
+                header("Location: ../templates/admin/admin_dashboard.php");
             } elseif ($user['role'] == 'doctor') {
-                header("Location: ../templates/doctor/doctor_dashboard.html");
+                header("Location: ../templates/doctor/doctor_dashboard.php");
             } else {
-                header("Location: ../templates/patient/patient_dashboard.html");
+                header("Location: ../templates/patient/patient_dashboard.php");
             }
             exit();
         } else {

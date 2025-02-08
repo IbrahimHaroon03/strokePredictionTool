@@ -1,4 +1,4 @@
-<?php include '../../SQL_PHP/doctor_access.php'; ?>
+<?php include '../../SQL_PHP/role_access/doctor_access.php'; ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -13,7 +13,7 @@
     <nav class="side-navbar">
         <div class="navbar-title">STROKE PREDICTION TOOL</div> 
         <ul>
-            <li><a href="../all/index.html">Home</a></li>
+            <li><a href="../all/index.php">Home</a></li>
             <li><a href="">Patient Management</a></li>
             <li><a href="">Predict Stroke Risk</a></li>
             <li><a href="">Health Advice</a></li>

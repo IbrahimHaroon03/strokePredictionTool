@@ -1,4 +1,4 @@
-<?php include '../../SQL_PHP/admin_access.php'; ?>
+<?php include '../../SQL_PHP/role_access/admin_access.php'; ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -13,7 +13,7 @@
     <nav class="side-navbar">
         <div class="navbar-title">STROKE PREDICTION TOOL</div> 
         <ul>
-            <li><a href="../all/index.html">Home</a></li>
+            <li><a href="../all/index.php">Home</a></li>
             <li><a href="">Manage Users</a></li>
             <li><a href="">Manage Patient Database</a></li>
     </nav>
