@@ -18,14 +18,14 @@ if (isset($_GET['id']) && isset($_GET['action'])) {
         $stmt->bind_param("i", $id);
         $stmt->execute();
 
-        header("Location: approve_users.php?status=approved");
+        header("Location: ../templates/admin/approve_users.php?status=approved");
     } elseif ($action == 'deny') {
         // Just delete from pending_users
         $stmt = $conn->prepare("DELETE FROM pending_users WHERE id = ?");
         $stmt->bind_param("i", $id);
         $stmt->execute();
 
-        header("Location: approve_users.php?status=denied");
+        header("Location: ../templates/admin/approve_users.php?status=denied");
     }
     exit();
 }
