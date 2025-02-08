@@ -13,16 +13,16 @@
     <nav class="side-navbar">
         <div class="navbar-title">STROKE PREDICTION TOOL</div> 
         <ul>
-            <li id="home"><a href="../all/index.php">Home</a></li>
+            <li id="home"><a href="index.php">Home</a></li>
             <li id="signin"> 
                 <?php if (!isset($_SESSION['user_id'])): ?>
                     <!-- Show login and sign-up buttons only if the user is not logged in -->
-                    <a href="../all/sign_in.php">Sign In</a>
+                    <a href="sign_in.php">Sign In</a>
                 <?php endif; ?>
             </li>
             <li id="signup">
                 <?php if (!isset($_SESSION['user_id'])): ?>
-                    <a href="../all/sign_up.php">Sign Up</a>
+                    <a href="sign_up.php">Sign Up</a>
                 <?php endif; ?>
             </li>
         </ul>
