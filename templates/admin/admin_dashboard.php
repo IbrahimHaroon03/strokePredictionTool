@@ -20,10 +20,43 @@
         </ul>
     </nav>
 
-    <div class="main-content">
+        <!-- Main Content -->
+        <div class="main-content">
         <section id="section1">
-            <h2>Patient Medical Data</h2>
-            <?php include 'fetch_data.php'; ?> 
+            <h2>Section 1</h2>
+            <p>This is the content of section 1.</p>
+        </section>
+        <section id="section2">
+            <h2>Section 2</h2>
+            <p>This is the content of section 2.</p>
+        </section>
+        <section id="section3">
+            <h2>Section 3</h2>
+            <p>This is the content of section 3.</p>
+        </section>
+        <section id="section4">
+            <h2>Section 4</h2>
+            <p>This is the content of section 4.</p>
+        </section>
+        <section id="section4">
+            <h2>Section 5</h2>
+            <p>This is the content of section 4.</p>
+        </section>
+        <section id="section4">
+            <h2>Section 6</h2>
+            <p>This is the content of section 4.</p>
+        </section>
+        <section id="section4">
+            <h2>Section 7</h2>
+            <p>This is the content of section 4.</p>
+        </section>
+        <section id="section4">
+            <h2>Section 8</h2>
+            <p>This is the content of section 4.</p>
+        </section>
+        <section id="section4">
+            <h2>Section 9</h2>
+            <p>This is the content of section 4.</p>
         </section>
     </div>
 
