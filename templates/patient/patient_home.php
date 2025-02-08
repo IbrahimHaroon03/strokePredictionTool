@@ -1,4 +1,4 @@
-<?php include '../../SQL_PHP/role_access/patient_access.php'; ?>
+<?php include '../../SQL_PHP/role_access/sign_access.php'; ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -10,11 +10,12 @@
     <title>Document</title>
 </head>
 <body>
+    
     <!-- Side Navbar -->
     <nav class="side-navbar">
         <div class="navbar-title">STROKE PREDICTION TOOL</div> 
         <ul>
-            <li><a href="patient_home.php">Home</a></li>
+            <li id="home"><a href="patient_home.php">Home</a></li>
             <li id="home"><a href="patient_dashboard.php">Dashboard</a></li>
             <li id="home"><a href=".php">Sign Out</a></li>
         </ul>
@@ -22,7 +23,6 @@
 
     <!-- Main Content -->
     <div class="main-content">
-        <h1 class="page_titles">Patients Dashboard</h1>
         <section id="section1">
             <h2>Section 1</h2>
             <p>This is the content of section 1.</p>
