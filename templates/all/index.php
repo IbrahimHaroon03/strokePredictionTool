@@ -16,8 +16,8 @@
             <li id="home"><a href="../all/index.php">Home</a></li>
             <?php if (!isset($_SESSION['user_id'])): ?>
                 <!-- Show login and sign-up buttons only if the user is not logged in -->
-                <a href="templates/login.html"><button>Log In</button></a>
-                <a href="templates/sign_up.html"><button>Sign Up</button></a>
+                <a href="templates/sign_in.php"><button>Log In</button></a>
+                <a href="templates/sign_up.php"><button>Sign Up</button></a>
             <?php endif; ?>
         </ul>
     </nav>

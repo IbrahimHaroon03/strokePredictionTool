@@ -15,7 +15,7 @@ if ($user['role'] == 'admin') {
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="../../static/navbar_styles.css">
-        <link rel="stylesheet" href="../../static/login_styles.css">
+        <link rel="stylesheet" href="../../static/sign_styles.css">
         <script src="../../static/active.js" defer></script>
         <title>Document</title>
     </head>
@@ -25,7 +25,7 @@ if ($user['role'] == 'admin') {
         <div class="navbar-title">STROKE PREDICTION TOOL</div> 
         <ul>
             <li id="home"><a href="../all/index.php">Home</a></li>
-            <li id="login"><a href="../all/login.php">Log In</a></li>
+            <li id="signin"><a href="../all/sign_in.php">Log In</a></li>
             <li id="signup"><a href="../all/sign_up.php">Sign Up</a></li>
         </ul>
     </nav>
@@ -34,7 +34,7 @@ if ($user['role'] == 'admin') {
     <div class="main-content">
         <section id="section1">
             <h1 class="page_titles">Log In Page</h1>
-            <form action="../../SQL_PHP/login.php" method="POST">
+            <form action="../../SQL_PHP/sign_in.php" method="POST">
                 <p>
                     <label for="username">Username:</label>
                     <input type="text" id="username" name="username" required>

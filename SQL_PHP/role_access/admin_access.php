@@ -3,7 +3,7 @@ session_start();
 
 if (!isset($_SESSION['user_id'])) {
     // Redirect to login page if not logged in
-    header("Location: ../../templates/all/login.php");
+    header("Location: ../../templates/all/sign_in.php");
     exit();
 }
 
