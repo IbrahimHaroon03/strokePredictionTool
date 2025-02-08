@@ -7,13 +7,13 @@ if (isset($_SESSION['user'])) {
     $user = $_SESSION['user']; // Get user data from session
 
     if ($user['role'] == 'admin') {
-        header("Location: ../admin/admin_dashboard.php");
+        header("Location: ../../templates/admin/admin_dashboard.php");
         exit; // Stop further execution after redirect
     } elseif ($user['role'] == 'doctor') {
-        header("Location: ../doctor/doctor_dashboard.php");
+        header("Location: ../../templates/doctor/doctor_dashboard.php");
         exit;
     } elseif ($user['role'] == 'patient') {
-        header("Location: ../patient/patient_dashboard.php");
+        header("Location: ../../templates/patient/patient_dashboard.php");
         exit;
     }
 }
