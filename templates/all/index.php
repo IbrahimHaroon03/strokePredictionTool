@@ -17,12 +17,12 @@
             <li id="signin"> 
                 <?php if (!isset($_SESSION['user_id'])): ?>
                     <!-- Show login and sign-up buttons only if the user is not logged in -->
-                    <a href="templates/sign_in.php">Sign In</a>
+                    <a href="../all/sign_in.php">Sign In</a>
                 <?php endif; ?>
             </li>
             <li id="signup">
                 <?php if (!isset($_SESSION['user_id'])): ?>
-                    <a href="templates/sign_up.php">Sign Up</a>
+                    <a href="../all/sign_up.php">Sign Up</a>
                 <?php endif; ?>
             </li>
         </ul>
