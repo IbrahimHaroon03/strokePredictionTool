@@ -13,9 +13,9 @@
     <nav class="side-navbar">
         <div class="navbar-title">STROKE PREDICTION TOOL</div> 
         <ul>
-            <li><a href="../all/index.php">Home</a></li>
-            <li><a href="">Manage Users</a></li>
-            <li><a href="">Manage Patient Database</a></li>
+            <li id="home"><a href="admin_home.php">Home</a></li>
+            <li id="home"><a href="admin_dashboard.php">Dashboard</a></li>
+            <li><a href="../../SQL_PHP/logout.php">Sign Out</a></li>
     </nav>
 
     <div class="main-content">
