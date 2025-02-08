@@ -4,9 +4,9 @@ if ($user['role'] == 'admin') {
     header("Location: ../admin/admin_dashboard.php");
     } elseif ($user['role'] == 'doctor') {
             header("Location: ../doctor/doctor_dashboard.php");
-    } else {
+    } elseif ($user['role'] == 'patient') {
         header("Location: ../patient/patient_dashboard.php");
-    }
+    } 
 ?>
 
 <!DOCTYPE html>
