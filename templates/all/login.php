@@ -1,3 +1,14 @@
+<?php
+// Redirect based on role
+if ($user['role'] == 'admin') {
+    header("Location: ../templates/admin/admin_dashboard.php");
+    } elseif ($user['role'] == 'doctor') {
+            header("Location: ../templates/doctor/doctor_dashboard.php");
+    } else {
+        header("Location: ../templates/patient/patient_dashboard.php");
+    }
+?>
+
 <!DOCTYPE html>
 <html>
     <head>

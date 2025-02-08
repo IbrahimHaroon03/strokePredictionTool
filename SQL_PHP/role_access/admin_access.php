@@ -11,7 +11,7 @@ $allowed_roles = ['admin'];
 
 if (!in_array($_SESSION['role'], $allowed_roles)) {
     // Redirect to a default page if role is not allowed
-    header("Location: ../../templates/all/index.php");
+    header("Location: ../../templates/admin/admin_dashboard.php");
     exit();
 }
 ?>

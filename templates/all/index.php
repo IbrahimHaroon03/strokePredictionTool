@@ -14,8 +14,11 @@
         <div class="navbar-title">STROKE PREDICTION TOOL</div> 
         <ul>
             <li id="home"><a href="../all/index.php">Home</a></li>
-            <li id="login"><a href="../all/login.php">Log In</a></li>
-            <li id="signup"><a href="../all/sign_up.php">Sign Up</a></li>
+            <?php if (!isset($_SESSION['user_id'])): ?>
+                <!-- Show login and sign-up buttons only if the user is not logged in -->
+                <a href="templates/login.html"><button>Log In</button></a>
+                <a href="templates/sign_up.html"><button>Sign Up</button></a>
+            <?php endif; ?>
         </ul>
     </nav>
 
