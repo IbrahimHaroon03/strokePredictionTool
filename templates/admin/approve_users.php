@@ -20,7 +20,7 @@ $result = $conn->query("SELECT * FROM pending_users");
         <ul>
             <li id="home"><a href="admin_home.php">Home</a></li>
             <li id="dashboard"><a href="admin_dashboard.php">Dashboard</a></li>
-            <li id="approveusers"><a href="approve_users.php">Approve New User</a></li>
+            <li id="approveusers"><a href="approve_users.php">Approve New Users</a></li>
             <li id="signout"><a href="../../SQL_PHP/logout.php">Sign Out</a></li>
         </ul>
     </nav>
@@ -40,8 +40,8 @@ $result = $conn->query("SELECT * FROM pending_users");
                 <td><?php echo $user['username']; ?></td>
                 <td><?php echo $user['role']; ?></td>
                 <td>
-                    <a href="process_approval.php?id=<?php echo $user['id']; ?>&action=approve">Approve</a> | 
-                    <a href="process_approval.php?id=<?php echo $user['id']; ?>&action=deny">Deny</a>
+                    <a href="../../SQL_PHP/user_approval.php?id=<?php echo $user['id']; ?>&action=approve">Approve</a> | 
+                    <a href="../../SQL_PHP/user_approval.php?id=<?php echo $user['id']; ?>&action=deny">Deny</a>
                 </td>
             </tr>
             <?php } ?>
