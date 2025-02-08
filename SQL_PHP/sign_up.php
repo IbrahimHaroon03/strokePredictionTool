@@ -18,12 +18,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
     // Prepare SQL statement to prevent SQL injection
-    $stmt = $conn->prepare("INSERT INTO users (username, password, role) VALUES (?, ?, ?)");
+    $stmt = $conn->prepare("INSERT INTO pending_users (username, password, role) VALUES (?, ?, ?)");
     $stmt->bind_param("sss", $username, $hashed_password, $role);
 
     // Execute and check success
     if ($stmt->execute()) {
-        echo "User registered successfully.";
+        echo "Registration request sent. Please wait for Admin approval.";
     } else {
         echo "Error: " . $stmt->error;
     }
