@@ -5,7 +5,7 @@ CREATE TABLE users (
     username VARCHAR(255) UNIQUE NOT NULL,
     password VARCHAR(255) NOT NULL,
     role ENUM('admin', 'patient', 'doctor') NOT NULL,
-    approved_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP 
+    date_approved TIMESTAMP DEFAULT CURRENT_TIMESTAMP 
 );
 
 CREATE TABLE pending_users (
@@ -13,7 +13,7 @@ CREATE TABLE pending_users (
     username VARCHAR(255) UNIQUE NOT NULL,
     password VARCHAR(255) NOT NULL,
     role ENUM('admin', 'doctor', 'patient') NOT NULL,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    sent_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE TABLE patientMedicalInfo (

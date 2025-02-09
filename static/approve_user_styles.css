@@ -1,9 +1,50 @@
 table {
     width: 100%;
     color: white;
-    border-color: 2px solid #576070;
+    border: 2px solid #576070;
     border-radius: 1%;
     background-color: #576070;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+table th {
+    background-color: #576070;
+}
+
+table tr {
+    background-color: #79869c;
+}
+
+button {
+    gap: 2%;
+    border: 0px;
+    padding: 5%;
+    background-color: #8c9ab2;
+}
+
+td button {
     display: flex;
-    justify-content:space-evenly;
+    justify-content: center; /* Centers text horizontally */
+    align-items: center; /* Centers text vertically */
+    gap: 2%;
+    width: 100%;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    cursor: pointer;
+}
+
+td button a {
+    text-decoration: none;
+    font-weight: bold;
+    color: white;
+}
+
+.button-container {
+    display: flex;
+    gap: 2%; /* Adjust spacing between buttons */
+    justify-content: center; /* Aligns buttons centrally */
+}
+
+td button:hover {
+    background-color: #9aa7b8; /* Darker shade for hover effect */
 }

@@ -21,32 +21,38 @@ $result = $conn->query("SELECT * FROM pending_users");
         <ul>
             <li id="home"><a href="admin_home.php">Home</a></li>
             <li id="dashboard"><a href="admin_dashboard.php">Dashboard</a></li>
-            <li id="approveusers"><a href="approve_users.php">Approve New Users</a></li>
+            <li id="approveusers"><a href="approve_users.php">Approve New User</a></li>
             <li id="signout"><a href="../../SQL_PHP/logout.php">Sign Out</a></li>
         </ul>
     </nav>
 
     <div class="main-content">
-        <h2>Pending User Approvals</h2>
-        <table border="1">
-            <tr>
-                <th>ID</th>
-                <th>Username</th>
-                <th>Role</th>
-                <th>Action</th>
-            </tr>
-            <?php while ($user = $result->fetch_assoc()) { ?>
-            <tr>
-                <td><?php echo $user['id']; ?></td>
-                <td><?php echo $user['username']; ?></td>
-                <td><?php echo $user['role']; ?></td>
-                <td>
-                    <a href="../../SQL_PHP/user_approval.php?id=<?php echo $user['id']; ?>&action=approve">Approve</a> | 
-                    <a href="../../SQL_PHP/user_approval.php?id=<?php echo $user['id']; ?>&action=deny">Deny</a>
-                </td>
-            </tr>
-            <?php } ?>
-        </table>
+        <section>
+        <h1 class="page_titles">Pending User Approvals</h1>
+            <table border="1">
+                <tr>
+                    <th><h3>ID</h3></th>
+                    <th><h3>Username</h3></th>
+                    <th><h3>Role</h3></th>
+                    <th><h3>Action</h3></th>
+                </tr>
+                <?php while ($user = $result->fetch_assoc()) { ?>
+                <tr>
+                    <td><?php echo $user['id']; ?></td>
+                    <td><?php echo $user['username']; ?></td>
+                    <td><?php echo $user['role']; ?></td>
+                    <td><?php echo $user['sent_at']; ?></td>
+                    <td>
+                        <div class="button-container">
+                            <button onclick="location.href='../../SQL_PHP/user_approval.php?id=<?php echo $user['id']; ?>&action=approve'">Approve</button> 
+                            <button onclick="location.href='../../SQL_PHP/user_approval.php?id=<?php echo $user['id']; ?>&action=deny'">Deny</button>
+                        </div>
+
+                    </td>
+                </tr>
+                <?php } ?>
+            </table>
+        </section?
     </div>
 </body>
 </html>
