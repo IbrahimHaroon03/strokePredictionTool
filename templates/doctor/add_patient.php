@@ -16,6 +16,7 @@
         <ul>
             <li id="home"><a href="doctor_home.php">Home</a></li>
             <li id="dashboard"><a href="doctor_dashboard.php">Dashboard</a></li>
+            <li id="add"><a href="add_patient.php">Add patient</a></li>
             <li id="signout"><a href="../../SQL_PHP/logout.php">Sign Out</a></li>
         </ul>
     </nav>
@@ -24,13 +25,12 @@
     <div class="main-content">
         <h1 class="page_titles">Patient Management</h1>
         <section id="section1">
-            <form action="../../SQL_PHP/add_patient.php" method="post">
+            <form action="../../SQL_PHP/crud/add_patient.php" method="post">
                 <!-- Gender -->
                 <label for="gender">Gender:</label>
                 <select id="gender" name="gender" required>
                     <option value="Male">Male</option>
                     <option value="Female">Female</option>
-                    <option value="Other">Other</option>
                 </select>
                 <br><br>
         
@@ -66,11 +66,11 @@
                 <!-- Work Type -->
                 <label for="work_type">Work Type:</label>
                 <select id="work_type" name="work_type" required>
-                    <option value="Children">Children</option>
-                    <option value="Gov_job">Government Job</option>
-                    <option value="Never_worked">Never Worked</option>
-                    <option value="Private">Private</option>
-                    <option value="Self-employed">Self-employed</option>
+                    <option value="children">Children</option>
+                    <option value="govt_job">Government Job</option>
+                    <option value="never_worked">Never Worked</option>
+                    <option value="private">Private</option>
+                    <option value="self-employed">Self-Employed</option>
                 </select>
                 <br><br>
         
@@ -95,9 +95,9 @@
                 <!-- Smoking Status -->
                 <label for="smoking_status">Smoking Status:</label>
                 <select id="smoking_status" name="smoking_status" required>
-                    <option value="never smoked">Never Smoked</option>
-                    <option value="formerly smoked">Formerly Smoked</option>
-                    <option value="smoked">Smokes</option>
+                    <option value="never_smoked">Never Smoked</option>
+                    <option value="formerly_smoked">Formerly Smoked</option>
+                    <option value="smokes">Smokes</option>
                     <option value="unknown">Unknown</option>
                 </select>
                 <br><br>
