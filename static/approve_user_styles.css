@@ -5,5 +5,5 @@ table {
     border-radius: 1%;
     background-color: #576070;
     display: flex;
-    justify-content: center;
+    justify-content:space-evenly;
 }
