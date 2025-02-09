@@ -16,14 +16,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $bmi = $_POST['bmi'];
     $smoking_status = $_POST['smoking_status'];
 
-    // Validate required fields
-    if (
-        empty($gender) || empty($age) || empty($hypertension) || empty($heart_disease) ||
-        empty($ever_married) || empty($work_type) || empty($residence_type) ||
-        empty($avg_glucose_level) || empty($bmi) || empty($smoking_status)
-    ) {
+    if ($gender === "" || $age === "" || $hypertension === "" || $heart_disease === "" || $ever_married === "" || $work_type === "" || $residence_type === "" || 
+    $avg_glucose_level === "" || $bmi === "" || $smoking_status === "")
+    {
         die("All fields are required.");
     }
+
 
     // Validate numeric values
     if (!is_numeric($age) || !is_numeric($hypertension) || !is_numeric($heart_disease) ||
@@ -38,7 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Prepare and bind parameters
     if ($stmt = $conn->prepare($sql)) {
         $stmt->bind_param("siiisssdds", $gender, $age, $hypertension, $heart_disease, $ever_married, $work_type, $residence_type, $avg_glucose_level, $bmi, $smoking_status);
-        
+
         // Execute query
         if ($stmt->execute()) {
             echo "Data submitted successfully!";
