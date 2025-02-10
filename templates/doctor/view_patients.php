@@ -26,7 +26,7 @@ $result = $conn->query($sql);
             <li id="add"><a href="add_patient.php">Add patient</a></li>
             <li id="view"><a href="view_patients.php">View Patients</a></li>
             <li id="delete"><a href="delete_patients.php">Delete Patients</a></li>
-            <li id="edit"><a href="update_patients.php">Update Patient Info</a></li>
+            <li id="edit"><a href="update_patients.php">Update Patients</a></li>
             <li id="predict"><a href="stroke_prediction.php">Predict Stroke</a></li>
             <li id="signout"><a href="../../SQL_PHP/logout.php">Sign Out</a></li>
         </ul>

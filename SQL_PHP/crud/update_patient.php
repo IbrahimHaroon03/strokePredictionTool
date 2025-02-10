@@ -8,11 +8,20 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $age = intval($_POST['age']);
     $hypertension = intval($_POST['hypertension']);
     $heart_disease = intval($_POST['heart_disease']);
+    $ever_married = $_POST['ever_married'];
+    $work_type = $_POST['work_type'];
+    $residence_type = $_POST['residence_type'];
+    $avg_glucose_level = floatval($_POST['avg_glucose_level']);
     $bmi = floatval($_POST['bmi']);
+    $smoking_status = $_POST['smoking_status'];
 
-    $sql = "UPDATE patientMedicalInfo SET gender=?, age=?, hypertension=?, heart_disease=?, bmi=? WHERE id=?";
+    $sql = "UPDATE patientMedicalInfo SET 
+                gender=?, age=?, hypertension=?, heart_disease=?, ever_married=?, 
+                work_type=?, residence_type=?, avg_glucose_level=?, bmi=?, smoking_status=? 
+            WHERE id=?";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("siiidi", $gender, $age, $hypertension, $heart_disease, $bmi, $patient_id);
+    $stmt->bind_param("siiisssdids", $gender, $age, $hypertension, $heart_disease, $ever_married, 
+                                  $work_type, $residence_type, $avg_glucose_level, $bmi, $smoking_status, $patient_id);
 
     if ($stmt->execute()) {
         header("Location: ../../templates/doctor/update_patients.php?success=Patient updated successfully");

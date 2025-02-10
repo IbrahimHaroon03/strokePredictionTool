@@ -45,11 +45,6 @@ $patient = $result->fetch_assoc();
         </ul>
     </nav>
 
-
-
-
-
-
     <div class="main-content">
         <h1 class="page_titles">Edit Patient Details</h1>
         <form action="../../SQL_PHP/crud/update_patient.php" method="post">
@@ -80,8 +75,45 @@ $patient = $result->fetch_assoc();
             </select>
             <br><br>
 
+            <label for="ever_married">Ever Married:</label>
+            <select id="ever_married" name="ever_married" required>
+                <option value="No" <?= $patient['ever_married'] == 'No' ? 'selected' : '' ?>>No</option>
+                <option value="Yes" <?= $patient['ever_married'] == 'Yes' ? 'selected' : '' ?>>Yes</option>
+            </select>
+            <br><br>
+
+            <label for="work_type">Work Type:</label>
+            <select id="work_type" name="work_type" required>
+                <option value="children" <?= $patient['work_type'] == 'children' ? 'selected' : '' ?>>Children</option>
+                <option value="govt_job" <?= $patient['work_type'] == 'govt_job' ? 'selected' : '' ?>>Government Job</option>
+                <option value="never_worked" <?= $patient['work_type'] == 'never_worked' ? 'selected' : '' ?>>Never Worked</option>
+                <option value="private" <?= $patient['work_type'] == 'private' ? 'selected' : '' ?>>Private</option>
+                <option value="self-employed" <?= $patient['work_type'] == 'self-employed' ? 'selected' : '' ?>>Self-Employed</option>
+            </select>
+            <br><br>
+
+            <label for="residence_type">Residence Type:</label>
+            <select id="residence_type" name="residence_type" required>
+                <option value="Rural" <?= $patient['residence_type'] == 'Rural' ? 'selected' : '' ?>>Rural</option>
+                <option value="Urban" <?= $patient['residence_type'] == 'Urban' ? 'selected' : '' ?>>Urban</option>
+            </select>
+            <br><br>
+
+            <label for="avg_glucose_level">Average Glucose Level:</label>
+            <input type="number" id="avg_glucose_level" name="avg_glucose_level" value="<?= htmlspecialchars($patient['avg_glucose_level']) ?>" step="0.01" required>
+            <br><br>
+
             <label for="bmi">BMI:</label>
             <input type="number" id="bmi" name="bmi" value="<?= htmlspecialchars($patient['bmi']) ?>" step="0.1" required>
+            <br><br>
+
+            <label for="smoking_status">Smoking Status:</label>
+            <select id="smoking_status" name="smoking_status" required>
+                <option value="never_smoked" <?= $patient['smoking_status'] == 'never_smoked' ? 'selected' : '' ?>>Never Smoked</option>
+                <option value="formerly_smoked" <?= $patient['smoking_status'] == 'formerly_smoked' ? 'selected' : '' ?>>Formerly Smoked</option>
+                <option value="smokes" <?= $patient['smoking_status'] == 'smokes' ? 'selected' : '' ?>>Smokes</option>
+                <option value="unknown" <?= $patient['smoking_status'] == 'unknown' ? 'selected' : '' ?>>Unknown</option>
+            </select>
             <br><br>
 
             <button type="submit">Update</button>
