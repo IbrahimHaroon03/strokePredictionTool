@@ -12,10 +12,10 @@ if ($_SESSION['role'] !== 'doctor') {
     // Redirect unauthorized users to their respective dashboards
     switch ($_SESSION['role']) {
         case 'admin':
-            header("Location: ../../templates/admin/admin_dashboard.php");
+            header("Location: ../../templates/admin/admin_home.php");
             break;
         case 'patient':
-            header("Location: ../../templates/patient/patient_dashboard.php");
+            header("Location: ../../templates/patient/patient_home.php");
             break;
         default:
             header("Location: ../../templates/all/index.php");
