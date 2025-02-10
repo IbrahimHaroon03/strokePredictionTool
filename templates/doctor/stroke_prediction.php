@@ -1,7 +1,8 @@
 <?php
 // Include database connection
-include '../../SQL_PHP/db_config.php'; 
-include '../../SQL_PHP/role_access/doctor_access.php';
+include '../../SQL_PHP/db_config.php';
+include '../../SQL_PHP/role_access/doctor_access.php'; 
+
 
 // Fetch all patient records
 $sql = "SELECT * FROM patientMedicalInfo";
@@ -16,23 +17,24 @@ $result = $conn->query($sql);
     <link rel="stylesheet" href="../../static/navbar_styles.css">
     <link rel="stylesheet" href="../../static/table_styles.css">
     <script src="../../static/active.js" defer></script>
-    <title>View Patients</title>
+    <title>Stroke Prediction</title>
 </head>
 <body>
     <nav class="side-navbar">
         <div class="navbar-title">STROKE PREDICTION TOOL</div> 
         <ul>
             <li id="home"><a href="doctor_home.php">Home</a></li>
-            <li id="dashboard"><a href="doctor_dashboard.php">Dashboard</a></li>
             <li id="add"><a href="add_patient.php">Add patient</a></li>
             <li id="view"><a href="view_patients.php">View Patients</a></li>
+            <li id="delete"><a href="delete_patients.php">Delete Patients</a></li>
+            <li id="predict"><a href="stroke_prediction.php">Predict Stroke</a></li>
             <li id="signout"><a href="../../SQL_PHP/logout.php">Sign Out</a></li>
         </ul>
     </nav>
 
     <div class="main-content">
-        <h1 class="page_titles">Patient Records</h1>
-        <table border="1">
+        <h1 class="page_titles">Stroke Prediction</h1>
+        <table border="1" id="patientTable">
             <tr>
                 <th>ID</th>
                 <th>Gender</th>
@@ -45,6 +47,8 @@ $result = $conn->query($sql);
                 <th>Glucose Level</th>
                 <th>BMI</th>
                 <th>Smoking Status</th>
+                <th>Stroke Likelihood</th>
+                <th>Actions</th> <!-- Added for the button -->
             </tr>
             <?php if ($result->num_rows > 0): ?>
                 <?php while ($row = $result->fetch_assoc()): ?>
@@ -60,17 +64,19 @@ $result = $conn->query($sql);
                         <td><?= htmlspecialchars($row['avg_glucose_level']) ?></td>
                         <td><?= htmlspecialchars($row['bmi']) ?></td>
                         <td><?= htmlspecialchars($row['smoking_status']) ?></td>
+                        <td id="stroke-<?= $row['id'] ?>"><?= htmlspecialchars($row['stroke'] ?? 'N/A') ?></td>
+                        <td>
+                            <!-- Button to trigger prediction for this specific row -->
+                            <button>Predict</button>
+                        </td>
                     </tr>
                 <?php endwhile; ?>
             <?php else: ?>
-                <tr><td colspan="11">No patient records found.</td></tr>
+                <tr><td colspan="13">No patient records found.</td></tr>
             <?php endif; ?>
         </table>
     </div>
 </body>
 </html>
 
-<?php
-// Close database connection
-$conn->close();
-?>
+<?php $conn->close(); ?>

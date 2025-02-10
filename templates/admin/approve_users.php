@@ -21,7 +21,6 @@ $result = $conn->query("SELECT * FROM pending_users");
         <div class="navbar-title">STROKE PREDICTION TOOL</div> 
         <ul>
             <li id="home"><a href="admin_home.php">Home</a></li>
-            <li id="dashboard"><a href="admin_dashboard.php">Dashboard</a></li>
             <li id="approveusers"><a href="approve_users.php">Approve New User</a></li>
             <li id="signout"><a href="../../SQL_PHP/logout.php">Sign Out</a></li>
         </ul>

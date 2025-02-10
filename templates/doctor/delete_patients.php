@@ -23,7 +23,7 @@ $result = $conn->query($sql);
         <div class="navbar-title">STROKE PREDICTION TOOL</div> 
         <ul>
             <li id="home"><a href="doctor_home.php">Home</a></li>
-            <li id="add"><a href="add_patient.php">Add patient</a></li>
+            <li id="add"><a href="add_patient.php">Add Patients</a></li>
             <li id="view"><a href="view_patients.php">View Patients</a></li>
             <li id="delete"><a href="delete_patients.php">Delete Patients</a></li>
             <li id="predict"><a href="stroke_prediction.php">Predict Stroke</a></li>
@@ -47,6 +47,7 @@ $result = $conn->query($sql);
                 <th><h4>BMI</h4></th>
                 <th><h4>Smoking Status</h4></th>
                 <th><h4>Stroke Likelihood</h4></th>
+                <th><h4>Action</h4></th>
             </tr>
             <?php if ($result->num_rows > 0): ?>
                 <?php while ($row = $result->fetch_assoc()): ?>
@@ -63,6 +64,12 @@ $result = $conn->query($sql);
                         <td><?= htmlspecialchars($row['bmi']) ?></td>
                         <td><?= htmlspecialchars($row['smoking_status']) ?></td>
                         <td><?= htmlspecialchars($row['stroke'] ?? 'N/A') ?></td>
+                        <td>
+                            <form method="POST" action="../../SQL_PHP/crud/delete_patient.php" onsubmit="return confirm('Are you sure you want to delete this patient?');">
+                                <input type="hidden" name="patient_id" value="<?= htmlspecialchars($row['id']) ?>">
+                                <button type="submit">Delete</button>
+                            </form>
+                        </td>
                     </tr>
                 <?php endwhile; ?>
             <?php else: ?>

@@ -15,9 +15,10 @@
         <div class="navbar-title">STROKE PREDICTION TOOL</div> 
         <ul>
             <li id="home"><a href="doctor_home.php">Home</a></li>
-            <li id="dashboard"><a href="doctor_dashboard.php">Dashboard</a></li>
             <li id="add"><a href="add_patient.php">Add patient</a></li>
             <li id="view"><a href="view_patients.php">View Patients</a></li>
+            <li id="delete"><a href="delete_patients.php">Delete Patients</a></li>
+            <li id="predict"><a href="stroke_prediction.php">Predict Stroke</a></li>
             <li id="signout"><a href="../../SQL_PHP/logout.php">Sign Out</a></li>
         </ul>
     </nav>

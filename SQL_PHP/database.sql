@@ -27,5 +27,6 @@ CREATE TABLE patientMedicalInfo (
     residence_type ENUM('Rural', 'Urban') NOT NULL,
     avg_glucose_level DECIMAL(5,2) CHECK (avg_glucose_level >= 0), 
     bmi DECIMAL(5,2) CHECK (bmi >= 0), 
-    smoking_status ENUM('formerly_smoked', 'never_smoked', 'smokes', 'unknown') NOT NULL
+    smoking_status ENUM('formerly_smoked', 'never_smoked', 'smokes', 'unknown') NOT NULL,
+    stroke VARCHAR(100)
 )
