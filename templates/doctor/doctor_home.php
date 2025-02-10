@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../static/navbar_styles.css">
     <script src="../../static/active.js" defer></script>
-    <title>Document</title>
+    <title>Home</title>
 </head>
 <body>
     
@@ -19,6 +19,7 @@
             <li id="add"><a href="add_patient.php">Add patient</a></li>
             <li id="view"><a href="view_patients.php">View Patients</a></li>
             <li id="delete"><a href="delete_patients.php">Delete Patients</a></li>
+            <li id="edit"><a href="update_patients.php">Update Patients</a></li>
             <li id="predict"><a href="stroke_prediction.php">Predict Stroke</a></li>
             <li id="signout"><a href="../../SQL_PHP/logout.php">Sign Out</a></li>
         </ul>

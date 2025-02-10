@@ -16,7 +16,7 @@ $result = $conn->query($sql);
     <link rel="stylesheet" href="../../static/navbar_styles.css">
     <link rel="stylesheet" href="../../static/table_styles.css">
     <script src="../../static/active.js" defer></script>
-    <title>View Patients</title>
+    <title>Delete Patients</title>
 </head>
 <body>
     <nav class="side-navbar">
@@ -26,13 +26,14 @@ $result = $conn->query($sql);
             <li id="add"><a href="add_patient.php">Add Patients</a></li>
             <li id="view"><a href="view_patients.php">View Patients</a></li>
             <li id="delete"><a href="delete_patients.php">Delete Patients</a></li>
+            <li id="edit"><a href="update_patients.php">Update Patients</a></li>
             <li id="predict"><a href="stroke_prediction.php">Predict Stroke</a></li>
             <li id="signout"><a href="../../SQL_PHP/logout.php">Sign Out</a></li>
         </ul>
     </nav>
 
     <div class="main-content">
-        <h1 class="page_titles">Patient Records</h1>
+        <h1 class="page_titles">Delete Patients</h1>
         <table border="1">
             <tr>
                 <th><h4>ID</h4></th>

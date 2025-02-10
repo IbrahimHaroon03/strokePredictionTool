@@ -1,8 +1,7 @@
 <?php
 // Include database connection
-include '../../SQL_PHP/db_config.php';
-include '../../SQL_PHP/role_access/doctor_access.php'; 
-
+include '../../SQL_PHP/db_config.php'; 
+include '../../SQL_PHP/role_access/doctor_access.php';
 
 // Fetch all patient records
 $sql = "SELECT * FROM patientMedicalInfo";
@@ -17,7 +16,7 @@ $result = $conn->query($sql);
     <link rel="stylesheet" href="../../static/navbar_styles.css">
     <link rel="stylesheet" href="../../static/table_styles.css">
     <script src="../../static/active.js" defer></script>
-    <title>Stroke Prediction</title>
+    <title>Update Patients</title>
 </head>
 <body>
     <nav class="side-navbar">
@@ -34,22 +33,22 @@ $result = $conn->query($sql);
     </nav>
 
     <div class="main-content">
-        <h1 class="page_titles">Stroke Prediction</h1>
-        <table border="1" id="patientTable">
+        <h1 class="page_titles">Update Patients</h1>
+        <table border="1">
             <tr>
-                <th>ID</th>
-                <th>Gender</th>
-                <th>Age</th>
-                <th>Hypertension</th>
-                <th>Heart Disease</th>
-                <th>Married</th>
-                <th>Work Type</th>
-                <th>Residence</th>
-                <th>Glucose Level</th>
-                <th>BMI</th>
-                <th>Smoking Status</th>
-                <th>Stroke Likelihood</th>
-                <th>Actions</th> <!-- Added for the button -->
+                <th><h4>ID</h4></th>
+                <th><h4>Gender</h4></th>
+                <th><h4>Age</h4></th>
+                <th><h4>Hypertension</h4></th>
+                <th><h4>Heart Disease</h4></th>
+                <th><h4>Married</h4></th>
+                <th><h4>Work Type</h4></th>
+                <th><h4>Residence</h4></th>
+                <th><h4>Glucose Level</h4></th>
+                <th><h4>BMI</h4></th>
+                <th><h4>Smoking Status</h4></th>
+                <th><h4>Stroke Likelihood</h4></th>
+                <th><h4>Action</h4></th>
             </tr>
             <?php if ($result->num_rows > 0): ?>
                 <?php while ($row = $result->fetch_assoc()): ?>
@@ -65,19 +64,21 @@ $result = $conn->query($sql);
                         <td><?= htmlspecialchars($row['avg_glucose_level']) ?></td>
                         <td><?= htmlspecialchars($row['bmi']) ?></td>
                         <td><?= htmlspecialchars($row['smoking_status']) ?></td>
-                        <td id="stroke-<?= $row['id'] ?>"><?= htmlspecialchars($row['stroke'] ?? 'N/A') ?></td>
+                        <td><?= htmlspecialchars($row['stroke'] ?? 'N/A') ?></td>
                         <td>
-                            <!-- Button to trigger prediction for this specific row -->
-                            <button>Predict</button>
+                            <button onclick="location.href='update_form.php?id=<?= htmlspecialchars($row['id']) ?>'">Update</button>
                         </td>
                     </tr>
                 <?php endwhile; ?>
             <?php else: ?>
-                <tr><td colspan="13">No patient records found.</td></tr>
+                <tr><td colspan="11">No patient records found.</td></tr>
             <?php endif; ?>
         </table>
     </div>
 </body>
 </html>
 
-<?php $conn->close(); ?>
+<?php
+// Close database connection
+$conn->close();
+?>
