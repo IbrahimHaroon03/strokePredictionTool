@@ -35,7 +35,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Prepare and bind parameters
     if ($stmt = $conn->prepare($sql)) {
-        $stmt->bind_param("siiisssdds", $gender, $age, $hypertension, $heart_disease, $ever_married, $work_type, $residence_type, $avg_glucose_level, $bmi, $smoking_status);
+        $stmt->bind_param("siiisssdds", $gender, $age, $hypertension, $heart_disease, $ever_married, 
+        $work_type, $residence_type, $avg_glucose_level, $bmi, $smoking_status);
 
         // Execute query
         if ($stmt->execute()) {

@@ -20,7 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 work_type=?, residence_type=?, avg_glucose_level=?, bmi=?, smoking_status=? 
             WHERE id=?";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("siiisssdids", $gender, $age, $hypertension, $heart_disease, $ever_married, 
+    $stmt->bind_param("siiisssddss", $gender, $age, $hypertension, $heart_disease, $ever_married, 
                                   $work_type, $residence_type, $avg_glucose_level, $bmi, $smoking_status, $patient_id);
 
     if ($stmt->execute()) {
