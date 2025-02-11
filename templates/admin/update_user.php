@@ -50,10 +50,7 @@ $result = $conn->query($sql);
                         <td><?= htmlspecialchars($row['role']) ?></td>
                         <td><?= htmlspecialchars($row['date_approved']) ?></td>
                         <td>
-                            <form method="POST" action="../../SQL_PHP/crud/delete_user.php" onsubmit="return confirm('Are you sure you want to delete this user?');">
-                                <input type="hidden" name="id" value="<?= htmlspecialchars($row['id']) ?>">
-                                <button type="submit">Delete</button>
-                            </form>
+                            <button onclick="location.href='update_form.php?id=<?= htmlspecialchars($row['id']) ?>'">Update</button>
                         </td>
                     </tr>
                 <?php endwhile; ?>

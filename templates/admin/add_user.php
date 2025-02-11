@@ -18,40 +18,32 @@ include '../../SQL_PHP/role_access/admin_access.php';
         <ul>
             <li id="home"><a href="admin_home.php">Home</a></li>
             <li id="approve"><a href="approve_users.php">Approve New User</a></li>
+            <li id="add"><a href="add_user.php">Add New User</a></li>
             <li id="view"><a href="view_users.php">View Users</a></li>
+            <li id="update"><a href="update_user.php">Update Users</a></li>
             <li id="delete"><a href="delete_user.php">Delete Users</a></li>
             <li id="signout"><a href="../../SQL_PHP/logout.php">Sign Out</a></li>
         </ul>
     </nav>
 
     <div class="main-content">
-        <h1 class="page_titles">View Patients</h1>
-        <table border="1">
-            <tr>
-                <th><h4>ID</h4></th>
-                <th><h4>Username</h4></th>
-                <th><h4>Role</h4></th>
-                <th><h4>Date Approved</h4></th>
+        <h1 class="page_titles">Add New User</h1>
+        <form method="POST" action="../../SQL_PHP/crud/add_user.php" onsubmit="return confirm('Are you sure you want to add this user?');">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
 
-            </tr>
-            <?php if ($result->num_rows > 0): ?>
-                <?php while ($row = $result->fetch_assoc()): ?>
-                    <tr>
-                        <td><?= htmlspecialchars($row['id']) ?></td>
-                        <td><?= htmlspecialchars($row['username']) ?></td>
-                        <td><?= htmlspecialchars($row['role']) ?></td>
-                        <td><?= htmlspecialchars($row['date_approved']) ?></td>
-                    </tr>
-                <?php endwhile; ?>
-            <?php else: ?>
-                <tr><td colspan="11">No patient records found.</td></tr>
-            <?php endif; ?>
-        </table>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+
+            <label for="role">Role:</label>
+            <select id="role" name="role" required>
+                <option value="admin">Admin</option>
+                <option value="doctor">Doctor</option>
+                <option value="patient">Patient</option>
+            </select>
+
+            <button type="submit">Add User</button>
+        </form>
     </div>
 </body>
 </html>
-
-<?php
-// Close database connection
-$conn->close();
-?>
