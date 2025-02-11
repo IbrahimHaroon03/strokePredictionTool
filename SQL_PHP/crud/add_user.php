@@ -17,6 +17,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt->bind_param("sss", $username, $hashed_password, $role);
 
     if ($stmt->execute()) {
+        $user_id = $stmt->insert_id; // Get new user's ID
+
+        // If the user is a patient, insert a blank medical record with NULL values
+        if ($role === 'patient') {
+            $stmt2 = $conn->prepare("INSERT INTO patientMedicalInfo (id) VALUES (?)");
+            $stmt2->bind_param("i", $user_id);
+            $stmt2->execute();
+            $stmt2->close();
+        }
+
         // Redirect back to the user list or another page with a success message
         header("Location: ../../templates/admin/add_user.php?success=User added successfully");
         exit();
