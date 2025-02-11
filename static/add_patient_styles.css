@@ -1,0 +1,53 @@
+/* Center the form horizontally */
+#section1 {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center;
+    flex-direction: column;   
+}
+
+.page_titles {
+    margin-right: 1.25rem;
+    width: 100%;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    border: 2px solid #576070;
+    background-color: #576070;
+    border-radius: 1%;
+    padding: 3%;
+    margin-top: 2%;
+    width: 80%;
+}
+
+form p {
+    margin: 0;               /* Remove default paragraph margins */
+}
+
+form label {
+    font-size:large;
+}
+
+form input[type="text"],
+form input[type="password"], form input[type="number"], form select {
+    width: 100%;             /* Full width inputs */
+    box-sizing: border-box;  /* Include padding in width */
+    font-size: small;
+}
+
+form input[type="submit"] {
+    width: 100%;             /* Full width submit button */
+    padding: 1%;
+    background-color: #007BFF; /* Example button color */
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: large;
+}
+
+form input[type="submit"]:hover {
+    background-color: #0056b3; /* Darker shade on hover */
+}

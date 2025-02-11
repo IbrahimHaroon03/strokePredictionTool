@@ -1,4 +1,4 @@
-<?php include '../../SQL_PHP/role_access/doctor_access.php'; ?>
+<?php include '../../SQL_PHP/role_access/patient_access.php'; ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -15,12 +15,9 @@
     <nav class="side-navbar">
         <div class="navbar-title">STROKE PREDICTION TOOL</div> 
         <ul>
-            <li id="home"><a href="doctor_home.php">Home</a></li>
-            <li id="add"><a href="add_patient.php">Add Patients</a></li>
-            <li id="view"><a href="view_patients.php">View Patients</a></li>
-            <li id="delete"><a href="delete_patients.php">Delete Patients</a></li>
-            <li id="edit"><a href="update_patients.php">Update Patients</a></li>
-            <li id="predict"><a href="stroke_prediction.php">Predict Stroke</a></li>
+            <li id="home"><a href="patient_home.php">Home</a></li>
+            <li id="home"><a href="add_medical_info.php">Add Medical Info</a></li>
+            <li id="home"><a href="view_medical_info.php">My Medical Info</a></li>
             <li id="signout"><a href="../../SQL_PHP/logout.php">Sign Out</a></li>
         </ul>
     </nav>
@@ -29,7 +26,7 @@
     <div class="main-content">
         <h1 class="page_titles">Add Patient</h1>
         <section id="section1">
-            <form action="../../SQL_PHP/crud/add_patient.php" method="post">
+            <form action="../../SQL_PHP/crud/add_medical_info.php" method="post">
                 <!-- Gender -->
                 <label for="gender">Gender:</label>
                 <select id="gender" name="gender" required>

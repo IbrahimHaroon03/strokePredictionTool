@@ -16,6 +16,8 @@
         <div class="navbar-title">STROKE PREDICTION TOOL</div> 
         <ul>
             <li id="home"><a href="patient_home.php">Home</a></li>
+            <li id="home"><a href="add_medical_info.php">Add Medical Info</a></li>
+            <li id="home"><a href="view_medical_info.php">My Medical Info</a></li>
             <li id="signout"><a href="../../SQL_PHP/logout.php">Sign Out</a></li>
         </ul>
     </nav>

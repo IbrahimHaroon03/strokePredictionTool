@@ -8,7 +8,7 @@ include '../../SQL_PHP/role_access/admin_access.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../static/navbar_styles.css">
-    <link rel="stylesheet" href="../../static/table_styles.css">
+    <link rel="stylesheet" href="../../static/sign_in_styles.css">
     <script src="../../static/active.js" defer></script>
     <title>View Patients</title>
 </head>
@@ -27,23 +27,29 @@ include '../../SQL_PHP/role_access/admin_access.php';
     </nav>
 
     <div class="main-content">
-        <h1 class="page_titles">Add New User</h1>
-        <form method="POST" action="../../SQL_PHP/crud/add_user.php" onsubmit="return confirm('Are you sure you want to add this user?');">
-            <label for="username">Username:</label>
-            <input type="text" id="username" name="username" required>
+        <section id="section1">
+            <h1 class="page_titles">Add New User</h1>
+            <form method="POST" action="../../SQL_PHP/crud/add_user.php" onsubmit="return confirm('Are you sure you want to add this user?');">
+                <p>
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username" required>
 
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required>
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" required>
 
-            <label for="role">Role:</label>
-            <select id="role" name="role" required>
-                <option value="admin">Admin</option>
-                <option value="doctor">Doctor</option>
-                <option value="patient">Patient</option>
-            </select>
-
-            <button type="submit">Add User</button>
-        </form>
+                    <label for="role">Role:</label>
+                    <select id="role" name="role" required>
+                        <option value="patient">Patient</option>
+                        <option value="doctor">Doctor</option>
+                        <option value="admin">Admin</option>
+                    </select>
+                    
+                </p>
+                <p>
+                    <input type="submit" value="ADD USER">
+                </p>
+            </form>
+        </section>
     </div>
 </body>
 </html>

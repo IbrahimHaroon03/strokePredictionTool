@@ -23,7 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Execute and check success
     if ($stmt->execute()) {
-        echo "Registration request sent. Please wait for Admin approval.";
+        header("Location: ../templates/all/sign_up.php?");
     } else {
         echo "Error: " . $stmt->error;
     }

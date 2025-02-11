@@ -54,16 +54,16 @@ $result = $conn->query($sql);
                 <?php while ($row = $result->fetch_assoc()): ?>
                     <tr>
                         <td><?= htmlspecialchars($row['id']) ?></td>
-                        <td><?= htmlspecialchars($row['gender']) ?></td>
-                        <td><?= htmlspecialchars($row['age']) ?></td>
-                        <td><?= $row['hypertension'] ? 'Yes' : 'No' ?></td>
-                        <td><?= $row['heart_disease'] ? 'Yes' : 'No' ?></td>
-                        <td><?= htmlspecialchars($row['ever_married']) ?></td>
-                        <td><?= htmlspecialchars($row['work_type']) ?></td>
-                        <td><?= htmlspecialchars($row['residence_type']) ?></td>
-                        <td><?= htmlspecialchars($row['avg_glucose_level']) ?></td>
-                        <td><?= htmlspecialchars($row['bmi']) ?></td>
-                        <td><?= htmlspecialchars($row['smoking_status']) ?></td>
+                        <td><?= htmlspecialchars($row['gender'] ?? 'N/A') ?></td>
+                        <td><?= htmlspecialchars($row['age'] ?? 'N/A') ?></td>
+                        <td><?= htmlspecialchars($row['hypertension'] ?? 'N/A')?></td>
+                        <td><?= htmlspecialchars($row['heart_disease'] ?? 'N/A')?></td>
+                        <td><?= htmlspecialchars($row['ever_married'] ?? 'N/A') ?></td>
+                        <td><?= htmlspecialchars($row['work_type'] ?? 'N/A') ?></td>
+                        <td><?= htmlspecialchars($row['residence_type'] ?? 'N/A') ?></td>
+                        <td><?= htmlspecialchars($row['avg_glucose_level'] ?? 'N/A') ?></td>
+                        <td><?= htmlspecialchars($row['bmi'] ?? 'N/A') ?></td>
+                        <td><?= htmlspecialchars($row['smoking_status'] ?? 'N/A') ?></td>
                         <td><?= htmlspecialchars($row['stroke'] ?? 'N/A') ?></td>
                         <td>
                             <button onclick="location.href='update_form.php?id=<?= htmlspecialchars($row['id']) ?>'">Update</button>
