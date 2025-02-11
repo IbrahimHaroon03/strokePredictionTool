@@ -1,4 +1,18 @@
-<?php include '../../SQL_PHP/role_access/patient_access.php'; ?>
+<?php
+// Include database connection
+include '../../SQL_PHP/db_config.php'; 
+include '../../SQL_PHP/role_access/patient_access.php';
+
+$user_id = $_SESSION['user_id']; // Get patient ID from session
+
+// Fetch the patient's medical info using a prepared statement
+$sql = "SELECT * FROM patientMedicalInfo WHERE id = ?";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("i", $user_id);
+$stmt->execute();
+$result = $stmt->get_result();
+$patient = $result->fetch_assoc(); // Fetch single row
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -27,7 +41,7 @@
     <div class="main-content">
         <h1 class="page_titles">Add Patient</h1>
         <section id="section1">
-            <form action="../../SQL_PHP/crud/add_medical_info.php" method="post">
+            <form action="../../SQL_PHP/crud/patient_user_update.php" method="post">
                 <!-- Gender -->
                 <label for="gender">Gender:</label>
                 <select id="gender" name="gender" required>
