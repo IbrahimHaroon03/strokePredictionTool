@@ -33,6 +33,9 @@
                     <label for="password">Password:</label>
                     <input type="password" id="password" name="password" required>
 
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+
                     <label for="role">Role:</label>
                     <select id="role" name="role" required>
                         <option value="patient">Patient</option>

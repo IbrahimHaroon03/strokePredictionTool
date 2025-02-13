@@ -5,6 +5,7 @@ CREATE TABLE users (
     username VARCHAR(255) UNIQUE NOT NULL,
     password VARCHAR(255) NOT NULL,
     role ENUM('admin', 'patient', 'doctor') NOT NULL,
+    email VARCHAR(255) NOT NULL,
     date_approved TIMESTAMP DEFAULT CURRENT_TIMESTAMP 
 );
 
@@ -13,6 +14,7 @@ CREATE TABLE pending_users (
     username VARCHAR(255) UNIQUE NOT NULL,
     password VARCHAR(255) NOT NULL,
     role ENUM('admin', 'doctor', 'patient') NOT NULL,
+    email VARCHAR(255) NOT NULL,
     sent_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 

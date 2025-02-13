@@ -2,13 +2,25 @@
 include '/role_access/admin_access.php';
 include 'db_config.php';
 
+// Function to send approval email
+function sendApprovalEmail($toEmail, $username) {
+    $subject = "Account Approval Notification";
+    $message = "Dear $username,\n\nYour account has been approved. You can now log in.\n\nThank you.";
+    $headers = "From: w1947892@westminster.ac.uk\r\n";
+    $headers .= "Reply-To: w1947892@westminster.ac.uk\r\n";
+    $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
+
+    // Send email
+    mail($toEmail, $subject, $message, $headers);
+}
+
 if (isset($_GET['id']) && isset($_GET['action'])) {
     $id = intval($_GET['id']); // Ensure ID is an integer
     $action = $_GET['action'];
 
     if ($action == 'approve') {
         // Fetch the user details from pending_users to get the role
-        $stmt = $conn->prepare("SELECT username, password, role FROM pending_users WHERE id = ?");
+        $stmt = $conn->prepare("SELECT username, email, password, role FROM pending_users WHERE id = ?");
         $stmt->bind_param("i", $id);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -20,14 +32,15 @@ if (isset($_GET['id']) && isset($_GET['action'])) {
 
         $user = $result->fetch_assoc();
         $username = $user['username'];
+        $email = $user['email'];
         $password = $user['password'];
         $role = $user['role'];
 
         $stmt->close(); // Close the select statement
 
         // Insert user into the users table
-        $stmt = $conn->prepare("INSERT INTO users (id, username, password, role) VALUES (?, ?, ?, ?)");
-        $stmt->bind_param("isss", $id, $username, $password, $role);
+        $stmt = $conn->prepare("INSERT INTO users (id, username, email, password, role) VALUES (?, ?, ?, ?)");
+        $stmt->bind_param("issss", $id, $username, $password, $role);
 
         if ($stmt->execute()) {
             $stmt->close();
@@ -39,6 +52,9 @@ if (isset($_GET['id']) && isset($_GET['action'])) {
                 $stmt2->execute();
                 $stmt2->close();
             }
+
+            // Send approval email
+            sendApprovalEmail($email, $username);
 
             // Delete from pending_users only after successful insertion into users
             $stmt = $conn->prepare("DELETE FROM pending_users WHERE id = ?");
