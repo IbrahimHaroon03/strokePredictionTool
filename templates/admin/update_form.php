@@ -46,7 +46,7 @@ $patient = $result->fetch_assoc();
     </nav>
 
     <div class="main-content">
-        <h1 class="page_titles">Add New User</h1>
+        <h1 class="page_titles">Update User</h1>
         <form method="POST" action="../../SQL_PHP/crud/update_user.php" onsubmit="return confirm('Are you sure you want to update this user?');">
             <input type="hidden" name="id" value="<?= htmlspecialchars($patient['id']) ?>">
 

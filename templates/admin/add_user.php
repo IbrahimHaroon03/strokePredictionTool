@@ -10,7 +10,7 @@ include '../../SQL_PHP/role_access/admin_access.php';
     <link rel="stylesheet" href="../../static/navbar_styles.css">
     <link rel="stylesheet" href="../../static/sign_in_styles.css">
     <script src="../../static/active.js" defer></script>
-    <title>View Patients</title>
+    <title>Add User</title>
 </head>
 <body>
     <nav class="side-navbar">

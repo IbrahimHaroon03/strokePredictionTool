@@ -22,7 +22,7 @@ $patient = $result->fetch_assoc(); // Fetch single row
     <link rel="stylesheet" href="../../static/navbar_styles.css">
     <link rel="stylesheet" href="../../static/table_styles.css">
     <script src="../../static/active.js" defer></script>
-    <title>My Medical Info</title>
+    <title>Update Medical Info</title>
 </head>
 <body>
     <nav class="side-navbar">
@@ -37,7 +37,7 @@ $patient = $result->fetch_assoc(); // Fetch single row
     </nav>
 
     <div class="main-content">
-        <h1 class="page_titles">My Medical Info</h1>
+        <h1 class="page_titles">Update Medical Info</h1>
         <table border="1">
             <tr>
                 <th>Gender</th>

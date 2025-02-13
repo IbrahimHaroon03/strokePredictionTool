@@ -16,7 +16,7 @@ $result = $conn->query($sql);
     <link rel="stylesheet" href="../../static/navbar_styles.css">
     <link rel="stylesheet" href="../../static/table_styles.css">
     <script src="../../static/active.js" defer></script>
-    <title>View Patients</title>
+    <title>Update Users</title>
 </head>
 <body>
     <nav class="side-navbar">
@@ -33,7 +33,7 @@ $result = $conn->query($sql);
     </nav>
 
     <div class="main-content">
-        <h1 class="page_titles">View Patients</h1>
+        <h1 class="page_titles">Update Users</h1>
         <table border="1">
             <tr>
                 <th><h4>ID</h4></th>

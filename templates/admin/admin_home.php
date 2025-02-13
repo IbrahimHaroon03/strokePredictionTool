@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../static/navbar_styles.css">
     <script src="../../static/active.js" defer></script>
-    <title>Document</title>
+    <title>Home</title>
 </head>
 <body>
     
