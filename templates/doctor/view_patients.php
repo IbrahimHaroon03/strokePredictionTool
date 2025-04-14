@@ -55,8 +55,8 @@ $result = $conn->query($sql);
                         <td><?= htmlspecialchars($row['id']) ?></td>
                         <td><?= htmlspecialchars($row['gender'] ?? 'N/A') ?></td>
                         <td><?= htmlspecialchars($row['age'] ?? 'N/A') ?></td>
-                        <td><?= htmlspecialchars($row['hypertension'] ?? 'N/A')?></td>
-                        <td><?= htmlspecialchars($row['heart_disease'] ?? 'N/A')?></td>
+                        <td><?= $row['hypertension'] == 1 ? 'Yes' : 'No' ?></td>
+                        <td><?= $row['heart_disease'] == 1 ? 'Yes' : 'No' ?></td>
                         <td><?= htmlspecialchars($row['ever_married'] ?? 'N/A') ?></td>
                         <td><?= htmlspecialchars($row['work_type'] ?? 'N/A') ?></td>
                         <td><?= htmlspecialchars($row['residence_type'] ?? 'N/A') ?></td>
