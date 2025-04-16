@@ -67,8 +67,10 @@ $result = $conn->query($sql);
                         <td><?= htmlspecialchars($row['smoking_status']) ?></td>
                         <td id="stroke-<?= $row['id'] ?>"><?= htmlspecialchars($row['stroke'] ?? 'N/A') ?></td>
                         <td>
-                            <!-- Button to trigger prediction for this specific row -->
-                            <button>Predict</button>
+                            <form method="POST" action="../../trained_model/prepare_new_data" onsubmit="return confirm('Please Confirm');">
+                                <input type="hidden" name="patient_id" value="<?= htmlspecialchars($row['id']) ?>">
+                                <button type="submit">Predict</button>
+                            </form>
                         </td>
                     </tr>
                 <?php endwhile; ?>
