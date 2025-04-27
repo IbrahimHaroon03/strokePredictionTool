@@ -57,7 +57,7 @@ $transformed_data = [
 $json_data = json_encode($transformed_data);
 
 // Call the Python script with the JSON data
-$command = "python3 predict.py '" . escapeshellarg($json_data) . "'";
+$command = "python3 https://strokepredictiontool.onrender.com '" . escapeshellarg($json_data) . "'";
 $prediction_result = shell_exec($command);
 
 // Parse the prediction result (assuming Python returns a percentage as a decimal)
