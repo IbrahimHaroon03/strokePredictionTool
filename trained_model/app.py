@@ -5,8 +5,8 @@ from flask import Flask, request, jsonify
 
 app = Flask(__name__)
 
-# Load the model, scaler, and imputer (if applicable)
-with open('model.pkl', 'rb') as f:
+# Load the model, scaler
+with open('KNearest_Neighbours_Model.pkl', 'rb') as f:
     model = pickle.load(f)
 
 with open('scaler.pkl', 'rb') as f:
