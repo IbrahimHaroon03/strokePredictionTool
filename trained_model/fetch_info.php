@@ -19,8 +19,6 @@ if ($result->num_rows === 0) {
     die("Patient not found for ID: " . $patient_id);
 }
 
-$patient = $result->fetch_assoc();
-
 // After fetching the patient data
 $patient = $result->fetch_assoc();
 
@@ -56,24 +54,47 @@ $transformed_data = [
 // Convert the PHP array to JSON for passing to Python
 $json_data = json_encode($transformed_data);
 
-// Call the Python script with the JSON data
-$command = "python3 https://strokepredictiontool.onrender.com/predict '" . escapeshellarg($json_data) . "'";
-$prediction_result = shell_exec($command);
+// Make an HTTP POST request to the Flask API
+$curl = curl_init('https://strokepredictiontool.onrender.com/predict');
+curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($curl, CURLOPT_POST, true);
+curl_setopt($curl, CURLOPT_POSTFIELDS, $json_data);
+curl_setopt($curl, CURLOPT_HTTPHEADER, [
+    'Content-Type: application/json',
+    'Content-Length: ' . strlen($json_data)
+]);
 
-// Parse the prediction result (assuming Python returns a percentage as a decimal)
-$prediction_percentage = floatval(trim($prediction_result));
+// Execute the request
+$response = curl_exec($curl);
 
-// Format as percentage string (e.g., "85.4%")
-$formatted_prediction = number_format($prediction_percentage * 100, 1) . '%';
+// Check for errors
+if ($response === false) {
+    $error = 'Curl error: ' . curl_error($curl);
+    error_log($error);
+    curl_close($curl);
+    die($error);
+}
 
-// Update the database with the prediction
-$update_sql = "UPDATE patientMedicalInfo SET stroke = ? WHERE id = ?";
-$update_stmt = $conn->prepare($update_sql);
-$update_stmt->bind_param("si", $formatted_prediction, $patient_id);
-$update_stmt->execute();
+curl_close($curl);
 
-// Close the statement
-$update_stmt->close();
+// Parse the JSON response
+$result = json_decode($response, true);
+
+// Check if the prediction key exists
+if (isset($result['prediction'])) {
+    // Format as percentage string with one decimal place
+    $formatted_prediction = number_format($result['prediction'], 1) . '%';
+    
+    // Update the database with the prediction
+    $update_sql = "UPDATE patientMedicalInfo SET stroke = ? WHERE id = ?";
+    $update_stmt = $conn->prepare($update_sql);
+    $update_stmt->bind_param("si", $formatted_prediction, $patient_id);
+    $update_stmt->execute();
+    $update_stmt->close();
+} else {
+    error_log('Invalid response format: ' . $response);
+    die('Error: Invalid response from prediction service');
+}
 
 // Redirect to a different page after updating
 header("Location: ../templates/doctor/stroke_prediction.php");

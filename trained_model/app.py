@@ -1,16 +1,13 @@
-import pickle
-import numpy as np
 import pandas as pd
+import joblib
 from flask import Flask, request, jsonify
 
 app = Flask(__name__)
 
-# Load the model, scaler
-with open('KNearest_Neighbours_Model.pkl', 'rb') as f:
-    model = pickle.load(f)
-
-with open('scaler.pkl', 'rb') as f:
-    scaler = pickle.load(f)
+# Load the trained model, imputer, and scaler
+model = joblib.load("trained_model/KNearest_Neighbours_Model.pkl")
+imputer = joblib.load("trained_model/imputer.pkl")
+scaler = joblib.load("trained_model/scaler.pkl")
 
 @app.route('/predict', methods=['POST'])
 def predict():
@@ -18,14 +15,27 @@ def predict():
     data = request.json
     df = pd.DataFrame([data])
 
-    # Apply the scaler to the data
-    df_scaled = scaler.transform(df)
+    # Impute missing values
+    new_df = imputer.transform(df)
 
-    # Make the prediction
-    prediction = model.predict_proba(df_scaled)[:, 1][0]  # Probability of stroke
+    # Convert back to DataFrame to retain column names
+    new_df = pd.DataFrame(new_df, columns=df.columns)
+
+    # Scale the data
+    new_df = scaler.transform(new_df)
+
+    # Also keep it as a DataFrame
+    new_df= pd.DataFrame(new_df, columns=df.columns)
+
+    # Predict probability
+    probability = model.predict_proba(new_df)[0][1]  # Probability of class '1' (stroke)
+
+    # Convert to percentage
+    percent = probability * 100
 
     # Return the prediction as a JSON response
-    return jsonify({'prediction': prediction})
+    return jsonify({'prediction': percent})
+
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, debug=True)
