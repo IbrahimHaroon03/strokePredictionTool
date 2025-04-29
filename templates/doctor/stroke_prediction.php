@@ -3,7 +3,6 @@
 include '../../SQL_PHP/db_config.php';
 include '../../SQL_PHP/role_access/doctor_access.php'; 
 
-
 // Fetch all patient records
 $sql = "SELECT * FROM patientMedicalInfo";
 $result = $conn->query($sql);
@@ -67,10 +66,11 @@ $result = $conn->query($sql);
                         <td><?= htmlspecialchars($row['smoking_status']) ?></td>
                         <td id="stroke-<?= $row['id'] ?>"><?= htmlspecialchars($row['stroke'] ?? 'N/A') ?></td>
                         <td>
-                            <form method="POST" action="../../trained_model/fetch_info.php" onsubmit="return confirm('Please Confirm');">
+                            <form method="POST" action="../../trained_model/predict_patient.php" onsubmit="return confirm('Please Confirm');">
                                 <input type="hidden" name="patient_id" value="<?= htmlspecialchars($row['id']) ?>">
-                                <button type="submit">Predict</button>
+                                <button type="submit" name="predict">Predict</button>
                             </form>
+
                         </td>
                     </tr>
                 <?php endwhile; ?>

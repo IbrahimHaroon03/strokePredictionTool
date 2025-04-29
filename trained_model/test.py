@@ -1,49 +1,49 @@
-import joblib
+from flask import Flask, request, jsonify
+import mysql.connector
 import pandas as pd
+import joblib
 
-# Load the trained model, imputer, and scaler
-model = joblib.load("trained_model/KNearest_Neighbours_Model.pkl")
-imputer = joblib.load("trained_model/imputer.pkl")
-scaler = joblib.load("trained_model/scaler.pkl")
+app = Flask(__name__)
 
-# Example: one new patient data row
-new_data = pd.DataFrame([{
-    'age': 28,
-    'hypertension': 0,
-    'heart_disease': 0,
-    'ever_married': 1,
-    'Residence_type': 1,
-    'avg_glucose_level': 171.23,
-    'bmi': 34,
-    'gender_Female': 1,
-    'gender_Male': 0,
-    'gender_Other': 0,
-    'work_type_Govt_job': 0,
-    'work_type_Never_worked': 0,
-    'work_type_Private': 1,
-    'work_type_Self-employed': 0,
-    'work_type_children': 0,
-    'smoking_status_Unknown': 0,
-    'smoking_status_formerly smoked': 0,
-    'smoking_status_never smoked': 0,
-    'smoking_status_smokes': 1
-}])
+# Load models once
+model = joblib.load("/full/path/to/KNearest_Neighbours_Model.pkl")
+imputer = joblib.load("/full/path/to/imputer.pkl")
+scaler = joblib.load("/full/path/to/scaler.pkl")
 
-# Impute missing values
-new_data_imputed = imputer.transform(new_data)
+@app.route('/predict', methods=['POST'])
+def predict():
+    data = request.json
+    patient_id = data.get("patient_id")
 
-# Convert back to DataFrame to retain column names
-new_data_imputed = pd.DataFrame(new_data_imputed, columns=new_data.columns)
+    if not patient_id:
+        return jsonify({"error": "Missing patient_id"}), 400
 
-# Scale the data
-new_data_scaled = scaler.transform(new_data_imputed)
+    # DB connection
+    conn = mysql.connector.connect(
+        host="phpmyadmin.ecs.westminster.ac.uk",
+        user="w1947892",
+        password="CTKqM5YRZiC0",
+        database="w1947892_0"
+    )
+    cursor = conn.cursor(dictionary=True)
 
-# Also keep it as a DataFrame
-new_data_scaled = pd.DataFrame(new_data_scaled, columns=new_data.columns)
+    # Fetch patient
+    cursor.execute("SELECT * FROM patientMedicalInfo WHERE id = %s", (patient_id,))
+    patient = cursor.fetchone()
+    if not patient:
+        return jsonify({"error": "Patient not found"}), 404
 
-# Predict probability
-probability = model.predict_proba(new_data_scaled)[0][1]  # Probability of class '1' (stroke)
+    # [Insert your same processing & prediction logic here]
 
-# Convert to percentage
-percent = probability * 100
-print(f"Predicted Stroke Risk: {percent:.2f}%")
+    # Final stroke % result
+    percent = 83.25  # for example
+
+    # Update DB (optional, or return to frontend)
+    update = conn.cursor()
+    update.execute("UPDATE patientMedicalInfo SET stroke = %s WHERE id = %s", (percent, patient_id))
+    conn.commit()
+
+    return jsonify({"success": True, "stroke_probability": percent})
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=8000)
