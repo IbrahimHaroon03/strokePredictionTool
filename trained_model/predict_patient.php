@@ -4,7 +4,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['patient_id'])) {
 
     $data = json_encode(["patient_id" => $patient_id]);
 
-    $ch = curl_init('http://localhost:8000/predict'); // Or full URL to your API
+    $ch = curl_init('https://strokepredictiontool.onrender.com/predict'); // Or full URL to your API
     curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
     curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -18,9 +18,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['patient_id'])) {
 
     $decoded = json_decode($response, true);
     if (isset($decoded['success']) && $decoded['success']) {
-        header("Location: view_patients.php?status=predicted");
+        header("Location: ../templates/doctor/stroke_prediction.php?status=predicted");
     } else {
-        header("Location: view_patients.php?error=api_failed");
+        header("Location: ../templates/doctor/stroke_prediction.php?error=api_failed");
     }
     exit();
 }

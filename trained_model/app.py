@@ -5,10 +5,10 @@ import joblib
 
 app = Flask(__name__)
 
-# Load models once
-model = joblib.load("/full/path/to/KNearest_Neighbours_Model.pkl")
-imputer = joblib.load("/full/path/to/imputer.pkl")
-scaler = joblib.load("/full/path/to/scaler.pkl")
+# Load model, imputer, scaler
+model = joblib.load("/home/student/892/w1947892/public_html/stroke_prediction_tool/trained_model/KNearest_Neighbours_Model.pkl")
+imputer = joblib.load("/home/student/892/w1947892/public_html/stroke_prediction_tool/trained_model/mputer.pkl")
+scaler = joblib.load("/home/student/892/w1947892/public_html/stroke_prediction_tool/trained_model/scaler.pkl")
 
 @app.route('/predict', methods=['POST'])
 def predict():
