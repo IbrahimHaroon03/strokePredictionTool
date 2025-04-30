@@ -9,9 +9,9 @@ app = Flask(__name__)
 def predict(): 
 
     # Load model, imputer, scaler
-    model = joblib.load("trained_model/KNearest_Neighbours_Model.pkl")
-    imputer = joblib.load("trained_model/imputer.pkl")
-    scaler = joblib.load("trained_model/scaler.pkl")
+    model = joblib.load("KNearest_Neighbours_Model.pkl")
+    imputer = joblib.load("imputer.pkl")
+    scaler = joblib.load("scaler.pkl")
 
     # Connect to MySQL
     conn = mysql.connector.connect(
