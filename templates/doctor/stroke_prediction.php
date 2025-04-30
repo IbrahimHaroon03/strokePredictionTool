@@ -66,7 +66,7 @@ $result = $conn->query($sql);
                         <td><?= htmlspecialchars($row['smoking_status']) ?></td>
                         <td id="stroke-<?= $row['id'] ?>"><?= htmlspecialchars($row['stroke'] ?? 'N/A') ?></td>
                         <td>
-                            <form method="POST" action="../../trained_model/predict_patient.php" onsubmit="return confirm('Please Confirm');">
+                            <form method="POST" action="../../trained_model/fetch.php" onsubmit="return confirm('Please Confirm');">
                                 <input type="hidden" name="patient_id" value="<?= htmlspecialchars($row['id']) ?>">
                                 <button type="submit" name="predict">Predict</button>
                             </form>
