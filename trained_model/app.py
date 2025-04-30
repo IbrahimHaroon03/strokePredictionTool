@@ -5,13 +5,13 @@ from flask import Flask, request
 
 app = Flask(__name__)
 
+# Load model, imputer, scaler
+model = joblib.load("KNearest_Neighbours_Model.pkl")
+imputer = joblib.load("imputer.pkl")
+scaler = joblib.load("scaler.pkl")
+
 @app.route('/predict', methods=['POST'])
 def predict(): 
-
-    # Load model, imputer, scaler
-    model = joblib.load("KNearest_Neighbours_Model.pkl")
-    imputer = joblib.load("imputer.pkl")
-    scaler = joblib.load("scaler.pkl")
 
     # Connect to MySQL
     conn = mysql.connector.connect(
