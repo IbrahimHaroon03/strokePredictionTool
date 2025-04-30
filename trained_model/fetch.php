@@ -20,6 +20,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['patient_id'])) {
     $response = curl_exec($ch);
     curl_close($ch);
 
+    header("Location: ../templates/doctor/stroke_prediction.php");
+    exit();
+
 } else {
     echo "No patient ID received.";
 }

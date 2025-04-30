@@ -1,7 +1,7 @@
 import mysql.connector
 import pandas as pd
 import joblib
-from flask import Flask, request, jsonify
+from flask import Flask, request
 
 app = Flask(__name__)
 
@@ -102,6 +102,8 @@ def predict():
     # Close connections
     update_cursor.close()
     conn.close()
+
+    return {"status": "success", "message": "Prediction completed."}, 200
 
 if __name__ == '__main__':
     app.run()
