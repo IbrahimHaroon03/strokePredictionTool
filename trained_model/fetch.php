@@ -1,7 +1,7 @@
 <?php
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['patient_id'])) {
 
-    include '../QL_PHP/db_config.php'; // Use your existing DB connection
+    include '../SQL_PHP/db_config.php'; // Use your existing DB connection
 
     $patient_id = $_POST['patient_id'];
 

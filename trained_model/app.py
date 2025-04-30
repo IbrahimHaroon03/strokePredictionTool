@@ -5,6 +5,8 @@ from flask import Flask, request
 app = Flask(__name__)
 
 model = joblib.load("KNearest_Neighbours_Model.pkl")
+imputer = joblib.load("imputer.pkl")
+scaler = joblib.load("scaler.pkl")
 
 @app.route('/predict', methods=['POST'])
 def predict():
@@ -20,6 +22,14 @@ def predict():
         'smoking_status_Unknown', 'smoking_status_formerly smoked',
         'smoking_status_never smoked', 'smoking_status_smokes'
     ])
+
+    # Impute missing values
+    df = imputer.transform(df)
+    df = pd.DataFrame(df, columns=df.columns)
+
+    # Scale the data
+    df = scaler.transform(df)
+    df = pd.DataFrame(df, columns=df.columns)
 
     probability = model.predict_proba(df)[0][1]
     return {"stroke_probability": probability * 100}, 200
