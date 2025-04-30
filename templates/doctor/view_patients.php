@@ -16,6 +16,16 @@ $result = $conn->query($sql);
     <link rel="stylesheet" href="../../static/navbar_styles.css">
     <link rel="stylesheet" href="../../static/table_styles.css">
     <script src="../../static/active.js" defer></script>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- DataTables CSS -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+
+    <!-- DataTables JS -->
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+
     <title>View Patients</title>
 </head>
 <body>
@@ -34,7 +44,7 @@ $result = $conn->query($sql);
 
     <div class="main-content">
         <h1 class="page_titles">View Patients</h1>
-        <table border="1">
+        <table id="patientsTable" border="1">
             <tr>
                 <th><h4>ID</h4></th>
                 <th><h4>Gender</h4></th>
@@ -71,6 +81,13 @@ $result = $conn->query($sql);
             <?php endif; ?>
         </table>
     </div>
+
+    <script>
+        $(document).ready(function() {
+            $('#patientsTable').DataTable();
+        });
+    </script>
+
 </body>
 </html>
 
