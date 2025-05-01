@@ -25,7 +25,7 @@
     <div class="main-content">
         <section id="section1">
             <h1 class="page_titles">Sign In Page</h1>
-            <form action="../../SQL_PHP/sign_in.php" method="POST">
+            <form action="../../SQL_PHP/authentication/sign_in.php" method="POST">
                 <p>
                     <label for="username">Username:</label>
                     <input type="text" id="username" name="username" required>

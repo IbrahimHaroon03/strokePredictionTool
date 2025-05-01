@@ -1,6 +1,6 @@
 <?php
-include '/role_access/admin_access.php';
-include 'db_config.php';
+include '../role_access/admin_access.php';
+include '../db_config.php';
 
 if (isset($_GET['id']) && isset($_GET['action'])) {
     $id = intval($_GET['id']); // Ensure ID is an integer
@@ -14,7 +14,7 @@ if (isset($_GET['id']) && isset($_GET['action'])) {
         $result = $stmt->get_result();
 
         if ($result->num_rows === 0) {
-            header("Location: ../templates/admin/approve_users.php?error=User not found");
+            header("Location: ../../templates/admin/approve_users.php?error=User not found");
             exit();
         }
 
@@ -46,9 +46,9 @@ if (isset($_GET['id']) && isset($_GET['action'])) {
             $stmt->execute();
             $stmt->close();
 
-            header("Location: ../templates/admin/approve_users.php?status=approved");
+            header("Location: ../../templates/admin/approve_users.php?status=approved");
         } else {
-            header("Location: ../templates/admin/approve_users.php?error=Failed to approve user");
+            header("Location: ../../templates/admin/approve_users.php?error=Failed to approve user");
         }
     } elseif ($action == 'deny') {
         // Just delete from pending_users
@@ -57,7 +57,7 @@ if (isset($_GET['id']) && isset($_GET['action'])) {
         $stmt->execute();
         $stmt->close();
 
-        header("Location: ../templates/admin/approve_users.php?status=denied");
+        header("Location: ../../templates/admin/approve_users.php?status=denied");
     }
     exit();
 }

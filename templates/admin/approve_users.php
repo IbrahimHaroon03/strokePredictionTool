@@ -26,7 +26,7 @@ $result = $conn->query("SELECT * FROM pending_users");
             <li id="view"><a href="view_users.php">View Users</a></li>
             <li id="update"><a href="update_user.php">Update Users</a></li>
             <li id="delete"><a href="delete_user.php">Delete Users</a></li>
-            <li id="signout"><a href="../../SQL_PHP/logout.php">Sign Out</a></li>
+            <li id="signout"><a href="../../SQL_PHP/authentication/logout.php">Sign Out</a></li>
         </ul>
     </nav>
 
@@ -48,8 +48,8 @@ $result = $conn->query("SELECT * FROM pending_users");
                     <td><?php echo $user['sent_at']; ?></td>
                     <td>
                         <div class="button-container">
-                            <button onclick="location.href='../../SQL_PHP/user_approval.php?id=<?php echo $user['id']; ?>&action=approve'">Approve</button> 
-                            <button onclick="location.href='../../SQL_PHP/user_approval.php?id=<?php echo $user['id']; ?>&action=deny'">Deny</button>
+                            <button onclick="location.href='../../SQL_PHP/authentication/user_approval.php?id=<?php echo $user['id']; ?>&action=approve'">Approve</button> 
+                            <button onclick="location.href='../../SQL_PHP/authentication/user_approval.php?id=<?php echo $user['id']; ?>&action=deny'">Deny</button>
                         </div>
 
                     </td>

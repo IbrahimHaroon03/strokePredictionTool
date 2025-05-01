@@ -1,7 +1,7 @@
 <?php
 session_start(); // Start the session
 
-include 'db_config.php';
+include '../db_config.php';
 
 // Handle form submission
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -32,11 +32,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             // Redirect based on role
             if ($user['role'] == 'admin') {
-                header("Location: ../templates/admin/admin_home.php");
+                header("Location: ../../templates/admin/admin_home.php");
             } elseif ($user['role'] == 'doctor') {
-                header("Location: ../templates/doctor/doctor_home.php");
+                header("Location: ../../templates/doctor/doctor_home.php");
             } else {
-                header("Location: ../templates/patient/patient_home.php");
+                header("Location: ../../templates/patient/patient_home.php");
             }
             exit();
         } else {

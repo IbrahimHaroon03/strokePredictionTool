@@ -1,6 +1,6 @@
 <?php
 
-include 'db_config.php';
+include '../db_config.php';
 
 // Handle form submission
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -23,7 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Execute and check success
     if ($stmt->execute()) {
-        header("Location: ../templates/all/sign_up.php?");
+        header("Location: ../../templates/all/sign_up.php?");
     } else {
         echo "Error: " . $stmt->error;
     }
