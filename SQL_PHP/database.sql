@@ -28,5 +28,5 @@ CREATE TABLE patientMedicalInfo (
     avg_glucose_level INT CHECK (avg_glucose_level >= 0), 
     bmi INT CHECK (bmi >= 0), 
     smoking_status ENUM('formerly_smoked', 'never_smoked', 'smokes', 'unknown') NOT NULL,
-    stroke VARCHAR(100)
+    stroke INT
 )

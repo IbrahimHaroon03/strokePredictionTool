@@ -2,9 +2,11 @@
 // Include database connection
 include '../../SQL_PHP/db_config.php'; 
 include '../../SQL_PHP/role_access/doctor_access.php';
+include '../../SQL_PHP/additional_features/sort.php'; 
+include '../../SQL_PHP/additional_features/filter.php'; 
 
 // Fetch all patient records
-$sql = "SELECT * FROM patientMedicalInfo";
+$sql = "SELECT * FROM patientMedicalInfo $where_clause ORDER BY $sort $order";
 $result = $conn->query($sql);
 ?>
 
@@ -15,7 +17,9 @@ $result = $conn->query($sql);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../static/navbar_styles.css">
     <link rel="stylesheet" href="../../static/table_styles.css">
+    <link rel="stylesheet" href="../../static/sort_styles.css">
     <script src="../../static/active.js" defer></script>
+
     <title>Delete Patients</title>
 </head>
 <body>
@@ -34,21 +38,24 @@ $result = $conn->query($sql);
 
     <div class="main-content">
         <h1 class="page_titles">Delete Patients</h1>
+
+        <?php include 'filter_form.php'; ?>
+        <h3 class="sub_titles"></h3>
+        
         <table border="1">
             <tr>
-                <th><h4>ID</h4></th>
-                <th><h4>Gender</h4></th>
-                <th><h4>Age</h4></th>
-                <th><h4>Hypertension</h4></th>
-                <th><h4>Heart Disease</h4></th>
-                <th><h4>Married</h4></th>
-                <th><h4>Work Type</h4></th>
-                <th><h4>Residence</h4></th>
-                <th><h4>Glucose Level</h4></th>
-                <th><h4>BMI</h4></th>
-                <th><h4>Smoking Status</h4></th>
-                <th><h4>Stroke Likelihood</h4></th>
-                <th><h4>Action</h4></th>
+                <th><?= sort_column('ID', 'id', $sort, $order) ?></th>
+                <th><?= sort_column('Gender', 'gender', $sort, $order) ?></th>
+                <th><?= sort_column('Age', 'age', $sort, $order) ?></th>
+                <th><?= sort_column('Hypertension', 'hypertension', $sort, $order) ?></th>
+                <th><?= sort_column('Heart Disease', 'heart_disease', $sort, $order) ?></th>
+                <th><?= sort_column('Married', 'ever_married', $sort, $order) ?></th>
+                <th><?= sort_column('Work Type', 'work_type', $sort, $order) ?></th>
+                <th><?= sort_column('Residence', 'residence_type', $sort, $order) ?></th>
+                <th><?= sort_column('Glucose Level', 'avg_glucose_level', $sort, $order) ?></th>
+                <th><?= sort_column('BMI', 'bmi', $sort, $order) ?></th>
+                <th><?= sort_column('Smoking Status', 'smoking_status', $sort, $order) ?></th>
+                <th><?= sort_column('Stroke Likelihood', 'stroke', $sort, $order) ?></th>
             </tr>
             <?php if ($result->num_rows > 0): ?>
                 <?php while ($row = $result->fetch_assoc()): ?>
