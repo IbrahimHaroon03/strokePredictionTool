@@ -9,7 +9,7 @@ table {
 }
 
 table th {
-    background-color: #576070;
+    background-color: #363b46;
 }
 
 table tr {
@@ -20,7 +20,8 @@ button {
     gap: 2%;
     border: 0px;
     padding: 5%;
-    background-color: #8c9ab2;
+    background-color: #363b46;
+    color: white;
 }
 
 td button {
@@ -47,4 +48,8 @@ td button a {
 
 td button:hover {
     background-color: #9aa7b8; /* Darker shade for hover effect */
+}
+
+.table_headers h3 {
+    color: white;
 }

@@ -66,31 +66,42 @@ body, html {
     font-size: 1rem; /* 16px / 16 = 1rem */
 }
 
-/* Navbar Title */
-.navbar-title, .page_titles {
-    font-size: 2rem; /* 24px / 16 = 1.5rem */
+.navbar-title,
+.page_titles {
+    font-size: 2rem;
     font-weight: bold;
-    margin-bottom: 1.25rem; /* 20px / 16 = 1.25rem */
     color: white;
     text-align: center;
-    border-bottom: 2px solid white; /* Add a white border */
-    padding-bottom: 3%;
-}
-
-.navbar-title {
+    height: 15vh; /* Fixed height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
     border: 2px solid white;
-    padding-top: 3%;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 .page_titles {
-    padding: 1.33rem;
+    text-transform: uppercase;
+    margin-bottom: 2%;
+    background-color: #232222;
 }
+
+.table_headers {
+    background-color: #232222;
+    width: 40vw;
+    padding: 1%;
+    border: 2px solid white;
+    margin-left: 22%;
+    text-align: center;
+}
+
 
 li.active {
     background-color: #576070; /* Active background color */
 }
 
-.sub_titles {
-    padding-bottom: 1% ;
-    border-bottom: 2px solid white; /* Add a white border */
+.table_headers {
+    color: white;
 }

@@ -30,7 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // SQL query to insert data
-    $sql = "INSERT INTO patientMedicalInfo (gender, age, hypertension, heart_disease, ever_married, work_type, residence_type, avg_glucose_level, bmi, smoking_status)
+    $sql = "INSERT INTO externalPatientRecords (gender, age, hypertension, heart_disease, ever_married, work_type, residence_type, avg_glucose_level, bmi, smoking_status)
             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
     // Prepare and bind parameters

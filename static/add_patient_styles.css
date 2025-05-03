@@ -1,53 +1,53 @@
-/* Center the form horizontally */
-#section1 {
-    display: flex;
-    justify-content: center; /* Center horizontally */
-    align-items: center;
-    flex-direction: column;   
-}
-
-.page_titles {
-    margin-right: 1.25rem;
-    width: 100%;
-}
-
 form {
     display: flex;
     flex-direction: column;
-    border: 2px solid #576070;
-    background-color: #576070;
+    border: 2px solid #363b46;
+    background-color: #363b46;
     border-radius: 1%;
-    padding: 3%;
+    padding: 2%;
     margin-top: 2%;
-    width: 80%;
+    width: 50%;
+    margin-left: 22%;
 }
 
 form p {
-    margin: 0;               /* Remove default paragraph margins */
+    margin: 0;
 }
 
 form label {
-    font-size:large;
+    color: white;
+    text-align: center;
+    width: 100%;
+    background-color: #575c65;
+    padding: 0.25rem 0;  
+    font-weight: bold;
 }
 
 form input[type="text"],
-form input[type="password"], form input[type="number"], form select {
+form input[type="password"],
+form input[type="number"],
+form select {
     width: 100%;             /* Full width inputs */
     box-sizing: border-box;  /* Include padding in width */
-    font-size: small;
+    padding: 0.5rem;         /* Uniform padding for inputs and select fields */
+    height: 2rem;         /* Uniform height for input and select fields */
+    background-color: #fff;  /* Background color for inputs */
+    border: 1px solid #ccc;  /* Light border for the inputs */
+    text-align: center;
 }
 
-form input[type="submit"] {
-    width: 100%;             /* Full width submit button */
-    padding: 1%;
-    background-color: #007BFF; /* Example button color */
+form button[type="submit"] {
+    font-size: 1rem;
+    padding: 0.75rem;
+    margin-top: 1rem;
+    background-color: #007bff;
     color: white;
     border: none;
     cursor: pointer;
-    font-weight: bold;
-    font-size: large;
+    transition: background-color 0.3s ease;
+    text-transform: uppercase;
 }
 
-form input[type="submit"]:hover {
-    background-color: #0056b3; /* Darker shade on hover */
+form button[type="submit"]:hover {
+    background-color: #0056b3;
 }

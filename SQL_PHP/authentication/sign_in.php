@@ -10,7 +10,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Validate input
     if (empty($username) || empty($password)) {
-        die("Please enter both username and password.");
+        die("Please enter both username, password and email.");
     }
 
     // Prepare SQL statement

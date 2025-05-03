@@ -46,12 +46,15 @@ $result = $conn->query("SELECT * FROM pending_users");
                     <td><?php echo $user['username']; ?></td>
                     <td><?php echo $user['role']; ?></td>
                     <td><?php echo $user['sent_at']; ?></td>
-                    <td>
-                        <div class="button-container">
-                            <button onclick="location.href='../../SQL_PHP/authentication/user_approval.php?id=<?php echo $user['id']; ?>&action=approve'">Approve</button> 
-                            <button onclick="location.href='../../SQL_PHP/authentication/user_approval.php?id=<?php echo $user['id']; ?>&action=deny'">Deny</button>
-                        </div>
-
+                    <td>            
+                        <?php if ($user['email_sent']) { ?>
+                            <span style="color: green;">Verification email sent</span>
+                        <?php } else { ?>
+                            <div class="button-container">
+                                <button onclick="location.href='../../SQL_PHP/authentication/user_approval.php?id=<?php echo $user['id']; ?>&action=approve'">Approve</button> 
+                                <button onclick="location.href='../../SQL_PHP/authentication/user_approval.php?id=<?php echo $user['id']; ?>&action=deny'">Deny</button>
+                            </div>
+                        <?php } ?>
                     </td>
                 </tr>
                 <?php } ?>

@@ -2,20 +2,36 @@
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
-    justify-content: space-between;
+    justify-content: flex-start;
+    background-color: #363b46;
+    padding: 2%;
+    font-weight: bold;
+}
+
+.filter-form .filter-item {
+    width: calc((100% - 5rem) / 6); /* 6 items with 1rem gap between each */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .filter-form label {
-    flex: 1 1 15%; /* Adjust the width of labels to fit 6 per row */
-    min-width: 12%; /* Allow more labels to fit in one row */
     color: white;
+    text-align: center;
+    width: 100%;
+    background-color: #575c65;
+    padding: 0.25rem 0;
 }
 
 .filter-form input,
 .filter-form select {
     width: 100%;
     box-sizing: border-box;
+    text-align: center;
+    height: 1.5rem;
+    border: none;
 }
+
 
 .filter-form .button-group {
     display: flex;
@@ -23,6 +39,8 @@
     gap: 1rem;
     width: 100%;
     margin-top: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
 }
 
 .filter-form .button-group button,
@@ -36,7 +54,6 @@
     background-color: #007bff;
     color: white;
     border: none;
-    border-radius: 0.25rem;
     text-decoration: none;
     cursor: pointer;
     transition: background-color 0.3s ease;
@@ -55,3 +72,7 @@
     background-color: #5a6268;
 }
 
+button {
+    font-weight: bold;
+    text-transform: uppercase;
+}

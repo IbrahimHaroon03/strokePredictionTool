@@ -5,9 +5,13 @@ include '../../SQL_PHP/role_access/doctor_access.php';
 include '../../SQL_PHP/additional_features/sort.php'; 
 include '../../SQL_PHP/additional_features/filter.php'; 
 
-// Fetch all patient records
+// Fetch all patient medical info
 $sql = "SELECT * FROM patientMedicalInfo $where_clause ORDER BY $sort $order";
 $result = $conn->query($sql);
+
+// Fetch all external medical records
+$sql2 = "SELECT * FROM externalPatientRecords $where_clause ORDER BY $sort $order";
+$result2 = $conn->query($sql2);
 ?>
 
 <!DOCTYPE html>
@@ -21,6 +25,7 @@ $result = $conn->query($sql);
     <script src="../../static/active.js" defer></script>
 
     <title>View Patients</title>
+
 </head>
 <body>
     <nav class="side-navbar">
@@ -38,10 +43,11 @@ $result = $conn->query($sql);
 
     <div class="main-content">
         <h1 class="page_titles">View Patients</h1>
-        
-        <?php include 'filter_form.php'; ?>
-        <h3 class="sub_titles"></h3>
 
+        <h3 class="table_headers">FILTER OPTIONS</h3>
+        <?php include 'filter_form.php'; ?>
+
+        <h3 class="table_headers">PATIENTS WITH ACCOUNTS</h3>
         <table id="patientsTable" border="1">
             <tr>
                 <th><?= sort_column('ID', 'id', $sort, $order) ?></th>
@@ -78,7 +84,45 @@ $result = $conn->query($sql);
                 <tr><td colspan="12">No patient records found.</td></tr>
             <?php endif; ?>
         </table>
-        
+
+        <h3 class="table_headers">EXTERNAL PATIENT RECORDS</h3>
+        <table id="patientsTable" border="1">
+            <tr>
+                <th><?= sort_column('ID', 'id', $sort, $order) ?></th>
+                <th><?= sort_column('Gender', 'gender', $sort, $order) ?></th>
+                <th><?= sort_column('Age', 'age', $sort, $order) ?></th>
+                <th><?= sort_column('Hypertension', 'hypertension', $sort, $order) ?></th>
+                <th><?= sort_column('Heart Disease', 'heart_disease', $sort, $order) ?></th>
+                <th><?= sort_column('Married', 'ever_married', $sort, $order) ?></th>
+                <th><?= sort_column('Work Type', 'work_type', $sort, $order) ?></th>
+                <th><?= sort_column('Residence', 'residence_type', $sort, $order) ?></th>
+                <th><?= sort_column('Glucose Level', 'avg_glucose_level', $sort, $order) ?></th>
+                <th><?= sort_column('BMI', 'bmi', $sort, $order) ?></th>
+                <th><?= sort_column('Smoking Status', 'smoking_status', $sort, $order) ?></th>
+                <th><?= sort_column('Stroke Likelihood', 'stroke', $sort, $order) ?></th>
+            </tr>
+
+            <?php if ($result2->num_rows > 0): ?>
+                <?php while ($row2 = $result2->fetch_assoc()): ?>
+                    <tr>
+                        <td><?= htmlspecialchars($row2['id']) ?></td>
+                        <td><?= htmlspecialchars($row2['gender'] ?? 'N/A') ?></td>
+                        <td><?= htmlspecialchars($row2['age'] ?? 'N/A') ?></td>
+                        <td><?= $row2['hypertension'] == 1 ? 'Yes' : 'No' ?></td>
+                        <td><?= $row2['heart_disease'] == 1 ? 'Yes' : 'No' ?></td>
+                        <td><?= htmlspecialchars($row2['ever_married'] ?? 'N/A') ?></td>
+                        <td><?= htmlspecialchars($row2['work_type'] ?? 'N/A') ?></td>
+                        <td><?= htmlspecialchars($row2['residence_type'] ?? 'N/A') ?></td>
+                        <td><?= htmlspecialchars($row2['avg_glucose_level'] ?? 'N/A') ?></td>
+                        <td><?= htmlspecialchars($row2['bmi'] ?? 'N/A') ?></td>
+                        <td><?= htmlspecialchars($row2['smoking_status'] ?? 'N/A') ?></td>
+                        <td><?= htmlspecialchars($row2['stroke'] ?? 'N/A') ?></td>
+                    </tr>
+                <?php endwhile; ?>
+            <?php else: ?>
+                <tr><td colspan="12">No patient records found.</td></tr>
+            <?php endif; ?>
+        </table>
 
     </div>
     
