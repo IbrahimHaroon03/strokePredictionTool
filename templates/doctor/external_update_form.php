@@ -48,42 +48,42 @@ $patient = $result->fetch_assoc();
 
     <div class="main-content">
         <h1 class="page_titles">Edit Patient Details</h1>
-        <form action="../../SQL_PHP/crud/update_patient.php" method="post">
+        <form action="../../SQL_PHP/crud/external_update_patient.php" method="post">
             <input type="hidden" name="id" value="<?= htmlspecialchars($patient['id']) ?>">
 
-            <label for="gender">Gender:</label>
+            <label for="gender">Gender</label>
             <select id="gender" name="gender" required>
                 <option value="Male" <?= $patient['gender'] == 'Male' ? 'selected' : '' ?>>Male</option>
                 <option value="Female" <?= $patient['gender'] == 'Female' ? 'selected' : '' ?>>Female</option>
             </select>
             <br>
 
-            <label for="age">Age:</label>
+            <label for="age">Age</label>
             <input type="number" id="age" name="age" value="<?= htmlspecialchars($patient['age']) ?>" required>
             <br>
 
-            <label for="hypertension">Hypertension:</label>
+            <label for="hypertension">Hypertension</label>
             <select id="hypertension" name="hypertension" required>
                 <option value="0" <?= $patient['hypertension'] == 0 ? 'selected' : '' ?>>No</option>
                 <option value="1" <?= $patient['hypertension'] == 1 ? 'selected' : '' ?>>Yes</option>
             </select>
             <br>
 
-            <label for="heart_disease">Heart Disease:</label>
+            <label for="heart_disease">Heart Disease</label>
             <select id="heart_disease" name="heart_disease" required>
                 <option value="0" <?= $patient['heart_disease'] == 0 ? 'selected' : '' ?>>No</option>
                 <option value="1" <?= $patient['heart_disease'] == 1 ? 'selected' : '' ?>>Yes</option>
             </select>
             <br>
 
-            <label for="ever_married">Ever Married:</label>
+            <label for="ever_married">Ever Married</label>
             <select id="ever_married" name="ever_married" required>
                 <option value="No" <?= $patient['ever_married'] == 'No' ? 'selected' : '' ?>>No</option>
                 <option value="Yes" <?= $patient['ever_married'] == 'Yes' ? 'selected' : '' ?>>Yes</option>
             </select>
             <br>
 
-            <label for="work_type">Work Type:</label>
+            <label for="work_type">Work Type</label>
             <select id="work_type" name="work_type" required>
                 <option value="children" <?= $patient['work_type'] == 'children' ? 'selected' : '' ?>>Children</option>
                 <option value="govt_job" <?= $patient['work_type'] == 'govt_job' ? 'selected' : '' ?>>Government Job</option>
@@ -93,22 +93,22 @@ $patient = $result->fetch_assoc();
             </select>
             <br>
 
-            <label for="residence_type">Residence Type:</label>
+            <label for="residence_type">Residence Type</label>
             <select id="residence_type" name="residence_type" required>
                 <option value="Rural" <?= $patient['residence_type'] == 'Rural' ? 'selected' : '' ?>>Rural</option>
                 <option value="Urban" <?= $patient['residence_type'] == 'Urban' ? 'selected' : '' ?>>Urban</option>
             </select>
             <br>
 
-            <label for="avg_glucose_level">Average Glucose Level:</label>
+            <label for="avg_glucose_level">Average Glucose Level</label>
             <input type="number" id="avg_glucose_level" name="avg_glucose_level" value="<?= htmlspecialchars($patient['avg_glucose_level']) ?>" step="0.01" required>
             <br>
 
-            <label for="bmi">BMI:</label>
+            <label for="bmi">BMI</label>
             <input type="number" id="bmi" name="bmi" value="<?= htmlspecialchars($patient['bmi']) ?>" step="0.1" required>
             <br>
 
-            <label for="smoking_status">Smoking Status:</label>
+            <label for="smoking_status">Smoking Status</label>
             <select id="smoking_status" name="smoking_status" required>
                 <option value="never_smoked" <?= $patient['smoking_status'] == 'never_smoked' ? 'selected' : '' ?>>Never Smoked</option>
                 <option value="formerly_smoked" <?= $patient['smoking_status'] == 'formerly_smoked' ? 'selected' : '' ?>>Formerly Smoked</option>
