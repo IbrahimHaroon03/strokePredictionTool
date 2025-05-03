@@ -40,9 +40,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         // Execute query
         if ($stmt->execute()) {
-            echo "Data submitted successfully!";
+            header("Location: ../../templates/doctor/add_patient.php?success=Patient updated successfully");
+            exit();
         } else {
-            echo "Error: " . $stmt->error;
+            header("Location: ../../templates/doctor/add_patient.php?error=Failed to update patient");
+            exit();
         }
 
         // Close statement
