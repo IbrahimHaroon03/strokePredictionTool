@@ -3,6 +3,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (params.get('error') === 'username_taken') {
         alert('Username already exists. Please choose another.');
+    } 
+    
+    if (params.get('error') === 'email_taken') {
+        alert('Email already in use. Please use another.');
     }
 
     if (params.get('status') === 'success') {

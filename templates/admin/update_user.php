@@ -16,6 +16,7 @@ $result = $conn->query($sql);
     <link rel="stylesheet" href="../../static/navbar_styles.css">
     <link rel="stylesheet" href="../../static/table_styles.css">
     <script src="../../static/active.js" defer></script>
+    
     <title>Update Users</title>
 </head>
 <body>

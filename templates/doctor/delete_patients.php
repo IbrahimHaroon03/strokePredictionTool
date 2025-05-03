@@ -68,8 +68,8 @@ $result2 = $conn->query($sql2);
                         <td><?= htmlspecialchars($row['id']) ?></td>
                         <td><?= htmlspecialchars($row['gender'] ?? 'N/A') ?></td>
                         <td><?= htmlspecialchars($row['age'] ?? 'N/A') ?></td>
-                        <td><?= htmlspecialchars($row['hypertension'] ?? 'N/A')?></td>
-                        <td><?= htmlspecialchars($row['heart_disease'] ?? 'N/A')?></td>
+                        <td><?= $row['hypertension'] == '1' ? 'Yes' : ($row['hypertension'] == '0' ? 'No' : 'N/A')?></td>
+                        <td><?= $row['heart_disease'] == '1' ? 'Yes' : ($row['heart_disease'] == '0' ? 'No' : 'N/A')?></td>
                         <td><?= htmlspecialchars($row['ever_married'] ?? 'N/A') ?></td>
                         <td><?= htmlspecialchars($row['work_type'] ?? 'N/A') ?></td>
                         <td><?= htmlspecialchars($row['residence_type'] ?? 'N/A') ?></td>
@@ -112,8 +112,8 @@ $result2 = $conn->query($sql2);
                         <td><?= htmlspecialchars($row2['id']) ?></td>
                         <td><?= htmlspecialchars($row2['gender'] ?? 'N/A') ?></td>
                         <td><?= htmlspecialchars($row2['age'] ?? 'N/A') ?></td>
-                        <td><?= $row2['hypertension'] == 1 ? 'Yes' : 'No' ?></td>
-                        <td><?= $row2['heart_disease'] == 1 ? 'Yes' : 'No' ?></td>
+                        <td><?= $row2['hypertension'] == '1' ? 'Yes' : ($row2['hypertension'] == '0' ? 'No' : 'N/A')?></td>
+                        <td><?= $row2['heart_disease'] == '1' ? 'Yes' : ($row2['heart_disease'] == '0' ? 'No' : 'N/A')?></td>
                         <td><?= htmlspecialchars($row2['ever_married'] ?? 'N/A') ?></td>
                         <td><?= htmlspecialchars($row2['work_type'] ?? 'N/A') ?></td>
                         <td><?= htmlspecialchars($row2['residence_type'] ?? 'N/A') ?></td>

@@ -27,18 +27,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit();
     }
 
-    // Check if email already exists in users or pending_users
-    $checkStmt2 = $conn->prepare("SELECT id FROM users WHERE email = ? UNION SELECT id FROM pending_users WHERE email = ?");
-    $checkStmt2->bind_param("ss", $email, $email);
-    $checkStmt2->execute();
-    $checkResult2 = $checkStmt2->get_result();
-
-    if ($checkResult2->num_rows > 0) {
-        // Redirect back with an error
-        header("Location: ../../templates/all/sign_up.php?error=email_taken");
-        exit();
-    }
-
     // Hash password for security
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
@@ -48,7 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Execute and check success
     if ($stmt->execute()) {
-        header("Location: ../../templates/all/sign_up.php?status=success");
+        header("Location: ../../templates/admin/approve_users.php?status=success");
     } else {
         echo "Error: " . $stmt->error;
     }

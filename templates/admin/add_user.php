@@ -10,6 +10,8 @@ include '../../SQL_PHP/role_access/admin_access.php';
     <link rel="stylesheet" href="../../static/navbar_styles.css">
     <link rel="stylesheet" href="../../static/sign_in_styles.css">
     <script src="../../static/active.js" defer></script>
+    <script src="../../static/check_username_duplicate.js" defer></script>
+
     <title>Add User</title>
 </head>
 <body>
@@ -29,13 +31,16 @@ include '../../SQL_PHP/role_access/admin_access.php';
     <div class="main-content">
         <section id="section1">
             <h1 class="page_titles">Add New User</h1>
-            <form method="POST" action="../../SQL_PHP/crud/add_user.php" onsubmit="return confirm('Are you sure you want to add this user?');">
+            <form method="POST" action="../../SQL_PHP/crud/admin_add_user.php" onsubmit="return confirm('Are you sure you want to create this user?');">
                 <p>
                     <label for="username">Username:</label>
                     <input type="text" id="username" name="username" required>
 
                     <label for="password">Password:</label>
                     <input type="password" id="password" name="password" required>
+
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
 
                     <label for="role">Role:</label>
                     <select id="role" name="role" required>

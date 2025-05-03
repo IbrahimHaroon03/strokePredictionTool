@@ -27,7 +27,10 @@ $patient = $result->fetch_assoc();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../static/navbar_styles.css">
+    <link rel="stylesheet" href="../../static/add_patient_styles.css">
+    <link rel="stylesheet" href="../../static/update_form.css">
     <script src="../../static/active.js" defer></script>
+
     <title>Edit User</title>
 </head>
 <body>
@@ -50,13 +53,13 @@ $patient = $result->fetch_assoc();
         <form method="POST" action="../../SQL_PHP/crud/update_user.php" onsubmit="return confirm('Are you sure you want to update this user?');">
             <input type="hidden" name="id" value="<?= htmlspecialchars($patient['id']) ?>">
 
-            <label for="username">Username:</label>
+            <label for="username">Username</label>
             <input type="text" id="username" name="username" value="<?= htmlspecialchars($patient['username']) ?>" required>
 
-            <label for="password">Password (Leave blank to keep current password):</label>
+            <label for="password">Password (Leave blank to keep current password)</label>
             <input type="password" id="password" name="password">
 
-            <label for="role">Role:</label>
+            <label for="role">Role</label>
             <select id="role" name="role" required>
                 <option value="admin" <?= $patient['role'] == 'admin' ? 'selected' : '' ?>>Admin</option>
                 <option value="doctor" <?= $patient['role'] == 'doctor' ? 'selected' : '' ?>>Doctor</option>
