@@ -1,0 +1,11 @@
+label {
+    text-align: center;
+    width: 100%;
+    background-color: #363b46;
+    padding: 0.4rem;
+    color: white;
+}
+
+label input {
+    margin-bottom: 2%;
+}

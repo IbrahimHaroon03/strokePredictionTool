@@ -4,6 +4,7 @@ include '../../SQL_PHP/db_config.php';
 include '../../SQL_PHP/role_access/doctor_access.php';
 include '../../SQL_PHP/additional_features/sort.php'; 
 include '../../SQL_PHP/additional_features/filter.php'; 
+include '../../SQL_PHP/additional_features/visual_indicators.php';
 
 // Fetch all patient medical info
 $sql = "SELECT * FROM patientMedicalInfo $where_clause ORDER BY $sort $order";
@@ -17,12 +18,14 @@ $result2 = $conn->query($sql2);
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../static/navbar_styles.css">
     <link rel="stylesheet" href="../../static/table_styles.css">
     <link rel="stylesheet" href="../../static/sort_styles.css">
+    <link rel="stylesheet" href="../../static/toggle_styles.css">
     <script src="../../static/active.js" defer></script>
+    <script src="../../static/toggle_visuals.js" defer></script>
 
     <title>Update Patients</title>
 </head>
@@ -47,6 +50,12 @@ $result2 = $conn->query($sql2);
         <?php include 'filter_form.php'; ?>
 
         <h3 class="table_headers">PATIENTS WITH ACCOUNTS</h3>
+
+        <label>
+            <input type="checkbox" id="toggleIndicators" checked>
+            Show Visual Indicators
+        </label>
+        
         <table border="1">
             <tr>
                 <th><?= sort_column('ID', 'id', $sort, $order) ?></th>
@@ -65,18 +74,18 @@ $result2 = $conn->query($sql2);
             <?php if ($result->num_rows > 0): ?>
                 <?php while ($row = $result->fetch_assoc()): ?>
                     <tr>
-                        <td><?= htmlspecialchars($row['id']) ?></td>
+                    <td><?= htmlspecialchars($row['id']) ?></td>
                         <td><?= htmlspecialchars($row['gender'] ?? 'N/A') ?></td>
-                        <td><?= htmlspecialchars($row['age'] ?? 'N/A') ?></td>
-                        <td><?= $row['hypertension'] == '1' ? 'Yes' : ($row['hypertension'] == '0' ? 'No' : 'N/A')?></td>
-                        <td><?= $row['heart_disease'] == '1' ? 'Yes' : ($row['heart_disease'] == '0' ? 'No' : 'N/A')?></td>
+                        <?= style_age_cell(htmlspecialchars($row['age'] ?? 'N/A')) ?>
+                        <?= style_heart_and_hyper_cell($row['hypertension'] == '1' ? 'Yes' : ($row['hypertension'] == '0' ? 'No' : 'N/A'))?>
+                        <?= style_heart_and_hyper_cell($row['heart_disease'] == '1' ? 'Yes' : ($row['heart_disease'] == '0' ? 'No' : 'N/A'))?>
                         <td><?= htmlspecialchars($row['ever_married'] ?? 'N/A') ?></td>
                         <td><?= htmlspecialchars($row['work_type'] ?? 'N/A') ?></td>
                         <td><?= htmlspecialchars($row['residence_type'] ?? 'N/A') ?></td>
-                        <td><?= htmlspecialchars($row['avg_glucose_level'] ?? 'N/A') ?></td>
-                        <td><?= htmlspecialchars($row['bmi'] ?? 'N/A') ?></td>
-                        <td><?= htmlspecialchars($row['smoking_status'] ?? 'N/A') ?></td>
-                        <td><?= htmlspecialchars($row['stroke'] ?? 'N/A') ?></td>
+                        <?= style_glucose_cell(htmlspecialchars($row['avg_glucose_level'] ?? 'N/A')) ?>
+                        <?= style_bmi_cell(htmlspecialchars($row['bmi'] ?? 'N/A')) ?>
+                        <?= style_smoking_cell(htmlspecialchars($row['smoking_status'] ?? 'N/A')) ?>
+                        <?= style_stroke_cell(htmlspecialchars($row['stroke'] ?? 'N/A')) ?>
                         <td>
                             <button onclick="location.href='update_form.php?id=<?= htmlspecialchars($row['id']) ?>'">Update</button>
                         </td>
@@ -106,18 +115,18 @@ $result2 = $conn->query($sql2);
             <?php if ($result2->num_rows > 0): ?>
                 <?php while ($row2 = $result2->fetch_assoc()): ?>
                     <tr>
-                        <td><?= htmlspecialchars($row2['id']) ?></td>
+                    <td><?= htmlspecialchars($row2['id']) ?></td>
                         <td><?= htmlspecialchars($row2['gender'] ?? 'N/A') ?></td>
-                        <td><?= htmlspecialchars($row2['age'] ?? 'N/A') ?></td>
-                        <td><?= $row2['hypertension'] == '1' ? 'Yes' : ($row2['hypertension'] == '0' ? 'No' : 'N/A')?></td>
-                        <td><?= $row2['heart_disease'] == '1' ? 'Yes' : ($row2['heart_disease'] == '0' ? 'No' : 'N/A')?></td>
+                        <?= style_age_cell(htmlspecialchars($row2['age'] ?? 'N/A')) ?>
+                        <?= style_heart_and_hyper_cell($row2['hypertension'] == '1' ? 'Yes' : ($row2['hypertension'] == '0' ? 'No' : 'N/A'))?>
+                        <?= style_heart_and_hyper_cell($row2['heart_disease'] == '1' ? 'Yes' : ($row2['heart_disease'] == '0' ? 'No' : 'N/A'))?>
                         <td><?= htmlspecialchars($row2['ever_married'] ?? 'N/A') ?></td>
                         <td><?= htmlspecialchars($row2['work_type'] ?? 'N/A') ?></td>
                         <td><?= htmlspecialchars($row2['residence_type'] ?? 'N/A') ?></td>
-                        <td><?= htmlspecialchars($row2['avg_glucose_level'] ?? 'N/A') ?></td>
-                        <td><?= htmlspecialchars($row2['bmi'] ?? 'N/A') ?></td>
-                        <td><?= htmlspecialchars($row2['smoking_status'] ?? 'N/A') ?></td>
-                        <td><?= htmlspecialchars($row2['stroke'] ?? 'N/A') ?></td>
+                        <?= style_glucose_cell(htmlspecialchars($row2['avg_glucose_level'] ?? 'N/A')) ?>
+                        <?= style_bmi_cell(htmlspecialchars($row2['bmi'] ?? 'N/A')) ?>
+                        <?= style_smoking_cell(htmlspecialchars($row2['smoking_status'] ?? 'N/A')) ?>
+                        <?= style_stroke_cell(htmlspecialchars($row2['stroke'] ?? 'N/A')) ?>
                         <td>
                             <button onclick="location.href='external_update_form.php?id=<?= htmlspecialchars($row2['id']) ?>'">Update</button>
                         </td>
