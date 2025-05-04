@@ -118,7 +118,7 @@ $patient = $result->fetch_assoc(); // Fetch single row
                 </select>
                 <br>
         
-                <button type="submit">Submit</button>
+                <button type="submit">Update</button>
             </form>
         </section>
     </div>

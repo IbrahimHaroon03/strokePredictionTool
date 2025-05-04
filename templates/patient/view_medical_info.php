@@ -2,6 +2,7 @@
 // Include database connection
 include '../../SQL_PHP/db_config.php'; 
 include '../../SQL_PHP/role_access/patient_access.php';
+include '../../SQL_PHP/additional_features/visual_indicators.php';
 
 $user_id = $_SESSION['user_id']; // Get patient ID from session
 
@@ -21,7 +22,9 @@ $patient = $result->fetch_assoc(); // Fetch single row
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../static/navbar_styles.css">
     <link rel="stylesheet" href="../../static/table_styles.css">
+    <link rel="stylesheet" href="../../static/toggle_styles.css">
     <script src="../../static/active.js" defer></script>
+    <script src="../../static/toggle_visuals.js" defer></script>
     <title>My Medical Info</title>
 </head>
 <body>
@@ -31,13 +34,19 @@ $patient = $result->fetch_assoc(); // Fetch single row
             <li><a href="patient_home.php">Home</a></li>
             <li><a href="add_medical_info.php">Add Medical Info</a></li>
             <li><a href="view_medical_info.php">My Medical Info</a></li>
-            <li><a href="update_info.php">Update My Medical Info</a></li>
+            <li><a href="update_form.php">Update My Medical Info</a></li>
             <li><a href="../../SQL_PHP/authentication/logout.php">Sign Out</a></li>
         </ul>
     </nav>
 
     <div class="main-content">
         <h1 class="page_titles">My Medical Info</h1>
+
+        <label>
+            <input type="checkbox" id="toggleIndicators" checked>
+            Show Visual Indicators
+        </label>
+
         <table border="1">
             <tr>
                 <th>Gender</th>
@@ -55,16 +64,16 @@ $patient = $result->fetch_assoc(); // Fetch single row
             <?php if ($patient): ?>
                 <tr>
                     <td><?= htmlspecialchars($patient['gender'] ?? 'N/A') ?></td>
-                    <td><?= htmlspecialchars($patient['age'] ?? 'N/A') ?></td>
-                    <td><?= htmlspecialchars($patient['hypertension'] ? 'Yes' : 'No') ?></td>
-                    <td><?= htmlspecialchars($patient['heart_disease'] ? 'Yes' : 'No') ?></td>
+                    <?= style_age_cell(htmlspecialchars($patient['age'] ?? 'N/A')) ?>
+                    <?= style_heart_and_hyper_cell(htmlspecialchars($patient['hypertension'] ? 'Yes' : 'No')) ?>
+                    <?= style_heart_and_hyper_cell(htmlspecialchars($patient['heart_disease'] ? 'Yes' : 'No')) ?>
                     <td><?= htmlspecialchars($patient['ever_married'] ?? 'N/A') ?></td>
                     <td><?= htmlspecialchars($patient['work_type'] ?? 'N/A') ?></td>
                     <td><?= htmlspecialchars($patient['residence_type'] ?? 'N/A') ?></td>
-                    <td><?= htmlspecialchars($patient['avg_glucose_level'] ?? 'N/A') ?></td>
-                    <td><?= htmlspecialchars($patient['bmi'] ?? 'N/A') ?></td>
-                    <td><?= htmlspecialchars($patient['smoking_status'] ?? 'N/A') ?></td>
-                    <td><?= htmlspecialchars($patient['stroke'] ?? 'N/A') ?></td>
+                    <?= style_glucose_cell(htmlspecialchars($patient['avg_glucose_level'] ?? 'N/A')) ?>
+                    <?= style_bmi_cell(htmlspecialchars($patient['bmi'] ?? 'N/A')) ?>
+                    <?= style_smoking_cell(htmlspecialchars($patient['smoking_status'] ?? 'N/A')) ?>
+                    <?= style_stroke_cell(htmlspecialchars($patient['stroke'] ?? 'N/A')) ?>
                 </tr>
             <?php else: ?>
                 <tr><td colspan="11">No medical records found.</td></tr>

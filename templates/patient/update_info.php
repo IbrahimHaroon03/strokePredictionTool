@@ -31,7 +31,7 @@ $patient = $result->fetch_assoc(); // Fetch single row
             <li><a href="patient_home.php">Home</a></li>
             <li><a href="add_medical_info.php">Add Medical Info</a></li>
             <li><a href="view_medical_info.php">My Medical Info</a></li>
-            <li><a href="update_info.php">Update My Medical Info</a></li>
+            <li><a href="update_form.php">Update My Medical Info</a></li>
             <li><a href="../../SQL_PHP/authentication/logout.php">Sign Out</a></li>
         </ul>
     </nav>

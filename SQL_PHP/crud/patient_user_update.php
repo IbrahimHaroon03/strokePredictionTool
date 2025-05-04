@@ -41,7 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } 
 
     if ($stmt->execute()) {
-        header("Location: ../../templates/patient/update_info.php?success=1");
+        header("Location: ../../templates/patient/view_medical_info.php?success=1");
     } else {
         echo "Error: " . $stmt->error;
     }
