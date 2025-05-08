@@ -27,7 +27,7 @@ $result2 = $conn->query($sql2);
     <script src="../../static/active.js" defer></script>
     <script src="../../static/toggle_visuals.js" defer></script>
 
-    <title>Update Patients</title>
+    <title>Patient Notes</title>
 </head>
 <body>
     <nav class="side-navbar">
@@ -45,7 +45,7 @@ $result2 = $conn->query($sql2);
     </nav>
 
     <div class="main-content">
-        <h1 class="page_titles">Update Patients</h1>
+        <h1 class="page_titles">Patient Notes</h1>
         
         <h3 class="table_headers">FILTER OPTIONS</h3>
         <?php include 'filter_form.php'; ?>
@@ -88,7 +88,7 @@ $result2 = $conn->query($sql2);
                         <?= style_smoking_cell(htmlspecialchars($row['smoking_status'] ?? 'N/A')) ?>
                         <?= style_stroke_cell(htmlspecialchars($row['stroke'] ?? 'N/A')) ?>
                         <td>
-                            <button onclick="location.href='update_form.php?id=<?= htmlspecialchars($row['id']) ?>'">Update</button>
+                            <button onclick="location.href='view_notes.php?id=<?= htmlspecialchars($row['id']) ?>'">Select</button>
                         </td>
                     </tr>
                 <?php endwhile; ?>
@@ -129,7 +129,7 @@ $result2 = $conn->query($sql2);
                         <?= style_smoking_cell(htmlspecialchars($row2['smoking_status'] ?? 'N/A')) ?>
                         <?= style_stroke_cell(htmlspecialchars($row2['stroke'] ?? 'N/A')) ?>
                         <td>
-                            <button onclick="location.href='external_update_form.php?id=<?= htmlspecialchars($row2['id']) ?>'">Update</button>
+                            <button onclick="location.href='view_notes.php?id=<?= htmlspecialchars($row2['id']) ?>'">Select</button>
                         </td>
                     </tr>
                 <?php endwhile; ?>

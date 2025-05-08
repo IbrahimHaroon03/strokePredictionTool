@@ -53,3 +53,11 @@ td button:hover {
 .table_headers h3 {
     color: white;
 }
+
+#emailsentnotif {
+    color: '#388E3C';
+}
+
+#emailsentnotif button:hover {
+    background-color: #363b46;
+}

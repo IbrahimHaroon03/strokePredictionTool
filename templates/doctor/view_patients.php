@@ -41,7 +41,8 @@ $result2 = $conn->query($sql2);
             <li id="delete"><a href="delete_patients.php">Delete Patients</a></li>
             <li id="edit"><a href="update_patients.php">Update Patients</a></li>
             <li id="predict"><a href="stroke_prediction.php">Predict Stroke</a></li>
-            <li id="signout"><a href="../../SQL_PHP/authentication/logout.php">Sign Out</a></li> 
+            <li id="predict"><a href="patient_notes.php">Patient Notes</a></li>
+            <li id="signout"><a href="../../SQL_PHP/authentication/logout.php">Sign Out</a></li>
         </ul>
     </nav>
 

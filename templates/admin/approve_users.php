@@ -48,7 +48,9 @@ $result = $conn->query("SELECT * FROM pending_users");
                     <td><?php echo $user['sent_at']; ?></td>
                     <td>            
                         <?php if ($user['email_sent']) { ?>
-                            <span style="color: green;">Verification email sent</span>
+                            <div id = "emailsentnotif" class="button-container">
+                                <button>Verification Email Sent</button> 
+                            </div>
                         <?php } else { ?>
                             <div class="button-container">
                                 <button onclick="location.href='../../SQL_PHP/authentication/user_approval.php?id=<?php echo $user['id']; ?>&action=approve'">Approve</button> 
